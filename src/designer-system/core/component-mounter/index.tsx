@@ -1,21 +1,24 @@
-import React, { ReactNode } from "react";
-import { View, ViewProps, ScrollViewProps, ViewStyle } from "react-native";
+import React, { ReactNode } from 'react';
+import { View } from 'react-native';
 
-export interface ComponentMounterType
-    extends ViewProps,
-        ViewStyle,
-        ScrollViewProps {
-    children?: ReactNode;
+// types
+import { BaseViewTypesProps } from '../types/view';
+
+// hooks
+import useResponsiveStyles from '@ds/hooks/useResponsiveStyles';
+
+export interface ComponentMounterType extends BaseViewTypesProps {
+    children: ReactNode;
 }
 
 const ComponentMounter: React.FC<ComponentMounterType> = (props) => {
-    const { children, ...attr } = props;
+    const { children, ...rest } = props;
+    const style = useResponsiveStyles(rest);
 
-    return (
-        <View {...attr} style={attr.style}>
-            {children}
-        </View>
-    );
+    const additionalStyles: any =
+        rest.style instanceof Array ? rest.style : [rest.style];
+
+    return <View style={[style, ...additionalStyles]}>{children}</View>;
 };
 
 export default ComponentMounter;
