@@ -1,30 +1,22 @@
-import React, { ReactNode } from 'react';
-import { Platform, ViewStyle } from 'react-native';
+import React from 'react';
+import { Platform } from 'react-native';
+
+// config
+import { createStyleSheet, useStyles } from '@ds/config/unistyles';
 
 // types
-import { BaseViewTypesProps } from '../types/view';
-
-// hooks
-import { BreakpointValue } from '../types/breakpointValue';
-import { createStyleSheet, useStyles } from '@ds/config/unistyles';
-import { StyledComponents } from '../styles';
+import { ComponentMounterType } from './types';
 
 // styles
-
-export interface ComponentMounterType extends BaseViewTypesProps {
-    children: ReactNode;
-    _platform?: (platform: typeof Platform) => ViewStyle;
-    _css?: BreakpointValue<string>;
-    as?: keyof typeof StyledComponents;
-}
+import { BaseStyleView } from '../styles';
 
 const ComponentMounter: React.FC<ComponentMounterType> = (props) => {
-    const { children, _platform, _css, as = 'View', ...rest } = props;
+    const { children, _platform, _css, ...rest } = props;
 
     const stylesheet = createStyleSheet(() => ({
         flexStyle: {
             ...rest,
-        } as ViewStyle,
+        },
     }));
 
     const { styles } = useStyles(stylesheet);
@@ -33,15 +25,13 @@ const ComponentMounter: React.FC<ComponentMounterType> = (props) => {
     const additionalStyles: any =
         rest.style instanceof Array ? rest.style : [rest.style];
 
-    const BaseComponent = StyledComponents[as] || StyledComponents.View;
-
     return (
-        <BaseComponent
+        <BaseStyleView
             style={[styles.flexStyle, ...additionalStyles, platformStyles]}
             _css={_css}
         >
             {children}
-        </BaseComponent>
+        </BaseStyleView>
     );
 };
 
