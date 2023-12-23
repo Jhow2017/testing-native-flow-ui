@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
-import { Platform, ViewStyle } from 'react-native';
+import { FlexStyle, Platform, ViewStyle } from 'react-native';
 
 // types
 import { BaseViewTypesProps } from '../types/view';
 
 // hooks
-import useResponsiveStyles from '@ds/hooks/useResponsiveStyles';
 import { BreakpointValue } from '../types/breakpointValue';
+import { createStyleSheet, useStyles } from '@ds/config/unistyles';
 
 // styles
 import { BaseStyleView } from '../styles';
@@ -19,7 +19,14 @@ export interface ComponentMounterType extends BaseViewTypesProps {
 
 const ComponentMounter: React.FC<ComponentMounterType> = (props) => {
     const { children, _platform, _css, ...rest } = props;
-    const style = useResponsiveStyles(rest);
+
+    const stylesheet = createStyleSheet(() => ({
+        flexStyle: {
+            ...rest,
+        } as ViewStyle,
+    }));
+
+    const { styles } = useStyles(stylesheet);
 
     const platformStyles = _platform ? _platform(Platform) : {};
     const additionalStyles: any =
@@ -27,7 +34,7 @@ const ComponentMounter: React.FC<ComponentMounterType> = (props) => {
 
     return (
         <BaseStyleView
-            style={[style, ...additionalStyles, platformStyles]}
+            style={[styles.flexStyle, ...additionalStyles, platformStyles]}
             _css={_css}
         >
             {children}
