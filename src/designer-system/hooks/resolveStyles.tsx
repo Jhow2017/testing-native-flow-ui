@@ -3,13 +3,13 @@ import { BreakpointValue } from '@ds/core/types/breakpointValue';
 import { BaseViewTypesProps } from '@ds/core/types/view';
 import { FlexStyle, ViewStyle } from 'react-native';
 
-// Função resolveStyle atualizada
+// Updated resolveStyle function
 export function resolveStyle<T>(
     prop: BreakpointValue<T>,
     screenSize: number
 ): T | undefined {
     if (typeof prop !== 'object' || prop === null) {
-        return prop; // Retorna o valor direto se não for um objeto ou for null
+        return prop; // Returns the direct value if it is not an object or is null
     }
     let selectedBreakpoint: T | undefined = undefined;
 
@@ -22,7 +22,7 @@ export function resolveStyle<T>(
     return selectedBreakpoint;
 }
 
-// Função resolveStyles para aplicar o estilo dinamicamente
+// resolveStyles function to apply the style dynamically
 export function resolveStyles(
     styleProps: BaseViewTypesProps,
     screenSize: number
