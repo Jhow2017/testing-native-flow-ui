@@ -1,35 +1,37 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { TextStyle, TextProps } from 'react-native';
+import { Platform } from 'react-native';
 
-type FontFamily =
-    | 'Inter_300Light'
-    | 'Inter_400Regular'
-    | 'Inter_500Medium'
-    | 'Inter_700Bold'
-    | 'Inter_900Black';
+// config
+import { createStyleSheet, useStyles } from '@ds/config/unistyles';
 
-type DsTextProps = TextStyle &
-    TextProps & {
-        fontFamily?: FontFamily | string;
-    };
+// types
+import { DsTextTypes } from './types';
 
-const StyledText = styled.Text<DsTextProps>``;
+// styles
+import { StyledText } from './styles';
+import { filterTextStyles } from '@ds/core/utils/filterTextStyles';
 
-const DsText: React.FC<DsTextProps> = (props) => {
-    const { children, numberOfLines, ellipsizeMode, ...attr } = props;
+const DsText: React.FC<DsTextTypes> = (props) => {
+    const { children, numberOfLines, ellipsizeMode, _css, ...rest } = props;
+
+    const styleFilter = filterTextStyles(rest);
+    const stylesheet = createStyleSheet(() => ({
+        flexStyle: {
+            ...styleFilter,
+        },
+    }));
+
+    const { styles } = useStyles(stylesheet);
+    const platformStyles = rest?._platform ? rest?._platform(Platform) : {};
+    const additionalStyles: any =
+        rest.style instanceof Array ? rest.style : [rest.style];
 
     return (
         <StyledText
             {...props}
-            style={[
-                props.style,
-                {
-                    ...(attr as TextStyle),
-                },
-            ]}
+            style={[styles.flexStyle, ...additionalStyles, platformStyles]}
         >
-            {props.children}
+            {children}
         </StyledText>
     );
 };

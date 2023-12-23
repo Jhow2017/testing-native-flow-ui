@@ -1,9 +1,18 @@
 import type { ReactNode } from 'react';
-import { TextProps, TextStyle } from 'react-native';
+import { TextStyle, Platform } from 'react-native';
 
-export interface DsTextType extends TextStyle {
-    children?: ReactNode;
-    as?: 'p' | 'small' | 'span' | 'strong' | 'b';
-    variant?: 'normal' | 'bold';
-    size?: 'xxlarge' | 'xlarge' | 'large' | 'medium' | 'small' | 'xsmall';
-}
+import { BaseFlexTypes } from '@ds/core/types/flex';
+import { BaseTextTypesProps } from '@ds/core/types/text';
+import { BaseThemeTypes } from '@ds/core/types/theme';
+import { BreakpointValue } from '@ds/core/types/breakpointValue';
+
+export type DsTextTypes = BaseFlexTypes &
+    BaseTextTypesProps &
+    BaseThemeTypes & {
+        children?: ReactNode;
+        as?: 'p' | 'small' | 'span' | 'strong' | 'b';
+        variant?: 'normal' | 'bold';
+        size?: 'xxlarge' | 'xlarge' | 'large';
+        _platform?: (platform: typeof Platform) => TextStyle;
+        _css?: BreakpointValue<string>;
+    };

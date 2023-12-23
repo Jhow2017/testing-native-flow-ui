@@ -1,7 +1,6 @@
 import React from 'react';
-import ComponentMounter, {
-    ComponentMounterType,
-} from '@ds/core/component-mounter';
+import ComponentMounter from '@ds/core/component-mounter';
+import { ComponentMounterType } from '@ds/core/component-mounter/types';
 
 export interface DsFlexType extends ComponentMounterType {}
 

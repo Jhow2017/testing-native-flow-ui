@@ -1,22 +1,128 @@
-import { StyledComponents } from '../styles';
+import { DsTextTypes } from '@ds/components/typography/text/types';
 
-interface BaseViewTypesProps {
-    [key: string]: any;
-}
+export const filterTextStyles = <T extends DsTextTypes>(styleProps: T): T => {
+    // Lista de propriedades permitidas para o componente Text
+    const allowedTextStyles: (keyof T)[] = [
+        'alignContent',
+        'alignItems',
+        'alignSelf',
+        'aspectRatio',
+        'borderBottomWidth',
+        'borderEndWidth',
+        'borderLeftWidth',
+        'borderRightWidth',
+        'borderStartWidth',
+        'borderTopWidth',
+        'borderWidth',
+        'bottom',
+        'columnGap',
+        'direction',
+        'display',
+        'end',
+        'flex',
+        'flexBasis',
+        'flexDirection',
+        'flexGrow',
+        'flexShrink',
+        'flexWrap',
+        'gap',
+        'height',
 
-export const filterTextStyles = <T extends BaseViewTypesProps>(
-    styleProps: T,
-    as: keyof typeof StyledComponents
-): T => {
-    if (as !== 'Text') {
-        return styleProps;
-    }
+        'justifyContent',
+        'left',
+        'margin',
+
+        'marginBottom',
+        'marginEnd',
+        'marginHorizontal',
+
+        'marginLeft',
+        'marginRight',
+        'marginStart',
+        'marginTop',
+        'marginVertical',
+        'maxHeight',
+        'maxWidth',
+        'minHeight',
+        'minWidth',
+        'overflow',
+        'padding',
+
+        'paddingBottom',
+        'paddingEnd',
+        'paddingHorizontal',
+
+        'paddingLeft',
+        'paddingRight',
+        'paddingStart',
+        'paddingTop',
+        'paddingVertical',
+        'position',
+        'right',
+        'rowGap',
+        'start',
+        'top',
+        'width',
+        'zIndex',
+        'shadowColor',
+        'shadowOffset',
+        'shadowOpacity',
+        'shadowRadius',
+        'transform',
+        'backfaceVisibility',
+        'backgroundColor',
+        'borderBottomColor',
+        'borderBottomEndRadius',
+        'borderBottomLeftRadius',
+        'borderBottomRightRadius',
+        'borderBottomStartRadius',
+        'borderColor',
+        'borderCurve',
+        'borderEndColor',
+        'borderEndEndRadius',
+        'borderEndStartRadius',
+        'borderLeftColor',
+        'borderRadius',
+        'borderRightColor',
+        'borderStartColor',
+        'borderStartEndRadius',
+        'borderStartStartRadius',
+        'borderStyle',
+        'borderTopColor',
+        'borderTopEndRadius',
+        'borderTopLeftRadius',
+        'borderTopRightRadius',
+        'borderTopStartRadius',
+        'elevation',
+        'opacity',
+        'pointerEvents',
+        'color',
+        'fontFamily',
+        'fontSize',
+        'fontStyle',
+        'fontWeight',
+        'includeFontPadding',
+        'letterSpacing',
+        'lineHeight',
+        'textAlign',
+        'textAlignVertical',
+        'textDecorationColor',
+        'textDecorationLine',
+        'textDecorationStyle',
+        'textShadowColor',
+        'textShadowOffset',
+        'textShadowRadius',
+        'textTransform',
+        'userSelect',
+        'verticalAlign',
+        'writingDirection',
+    ];
 
     const filteredStyles: Partial<T> = {};
 
-    Object.keys(styleProps).forEach((key) => {
-        if (styleProps[key] !== undefined) {
-            filteredStyles[key as keyof T] = styleProps[key];
+    allowedTextStyles.forEach((key) => {
+        if (styleProps.hasOwnProperty(key)) {
+            filteredStyles[key] = styleProps[key];
         }
     });
 

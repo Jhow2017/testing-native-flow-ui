@@ -1,4 +1,4 @@
-import { ViewProps, ViewStyle } from 'react-native';
+import { ViewProps, ViewStyle, Platform } from 'react-native';
 
 // hook
 import { BreakpointValue } from './breakpointValue';
@@ -20,4 +20,7 @@ export type BaseViewTypesProps = ViewStyleProps &
     ViewPropss &
     BaseFlexTypes &
     BaseTextTypesProps &
-    BaseThemeTypes;
+    BaseThemeTypes & {
+        _platform?: (platform: typeof Platform) => ViewStyle;
+        _css?: BreakpointValue<string>;
+    };
