@@ -1,18 +1,21 @@
-import React from "react";
-import { FlexStyle } from "react-native";
+import React from 'react';
 import ComponentMounter, {
     ComponentMounterType,
-} from "@ds/core/component-mounter";
+} from '@ds/core/component-mounter';
 
-export interface DsFlexType extends FlexStyle, ComponentMounterType {}
+export interface DsFlexType extends ComponentMounterType {}
 
 const DsFlex: React.FC<DsFlexType> = (props) => {
     const { children, ...attr } = props;
-
     return (
         <ComponentMounter
-            style={[attr?.style, { flexDirection: "row" }]}
             {...attr}
+            style={[
+                attr.style,
+                {
+                    flexDirection: 'row',
+                },
+            ]}
         >
             {children}
         </ComponentMounter>
