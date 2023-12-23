@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { FlexStyle, Platform, ViewStyle } from 'react-native';
+import { Platform, ViewStyle } from 'react-native';
 
 // types
 import { BaseViewTypesProps } from '../types/view';
