@@ -1,4 +1,4 @@
-import { breakpoints } from '@ds/config';
+import { breakpoints } from '@ds/config/theme/breakpoints';
 import { BreakpointValue } from '@ds/core/types/breakpointValue';
 import { BaseViewTypesProps } from '@ds/core/types/view';
 import { FlexStyle, ViewStyle } from 'react-native';

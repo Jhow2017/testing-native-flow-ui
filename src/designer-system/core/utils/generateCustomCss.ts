@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native';
 import { BreakpointValue } from '../types/breakpointValue';
-import { breakpoints } from '@ds/config';
+import { breakpoints } from '@ds/config/theme/breakpoints';
 
 const generateCustomCss = (cssBreakpoint: BreakpointValue<string>): string => {
     const screenWidth = Dimensions.get('window').width;
