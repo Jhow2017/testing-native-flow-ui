@@ -1,16 +1,20 @@
-import { DsText } from '../designer-system/components/typography';
-import { DsBox } from '../designer-system/layout';
+import { DsText } from '@ds/components/typography';
+import { DsFlex } from '@ds/layout';
+import { Text } from 'react-native';
 
 export default function TabOneScreen() {
     return (
-        <DsBox
+        <DsFlex
             flex={1}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            backgroundColor={'red'}
+            justifyContent={{ sm: 'center' }}
+            alignItems={{ sm: 'center', md: 'center' }}
+            backgroundColor={{ sm: 'red', md: 'blue' }}
+            gap={{ sm: 24, md: 24 }}
         >
+            <DsText color="green" fontSize={24}>
+                Olá!!
+            </DsText>
             <DsText>Olá!!</DsText>
-        </DsBox>
+        </DsFlex>
     );
 }
