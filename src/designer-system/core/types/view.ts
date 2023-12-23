@@ -1,12 +1,13 @@
 import { ViewProps, ViewStyle } from 'react-native';
 
+// hook
 import { BreakpointValue } from './breakpointValue';
-import { BaseFlexTypes } from './flex';
-import { BaseTextTypesProps } from './text';
 
-type Color = 'red' | 'blue';
+// types
+import type { BaseFlexTypes } from './flex';
+import type { BaseTextTypesProps } from './text';
+import type { Color, FontFamily } from './theme';
 
-// Views
 type ViewStyleProps = {
     [Property in keyof ViewStyle]?: BreakpointValue<ViewStyle[Property]>;
 };
@@ -15,9 +16,10 @@ type ViewPropss = {
     [Property in keyof ViewProps]?: BreakpointValue<ViewProps[Property]>;
 };
 
-export type BaseViewTypesProps = {
-    backgroundColor?: BreakpointValue<Color>;
-} & ViewStyleProps &
+export type BaseViewTypesProps = ViewStyleProps &
     ViewPropss &
     BaseFlexTypes &
-    BaseTextTypesProps;
+    BaseTextTypesProps & {
+        backgroundColor?: BreakpointValue<Color>;
+        fontFamily?: BreakpointValue<FontFamily>;
+    };
