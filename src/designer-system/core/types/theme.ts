@@ -1,6 +1,6 @@
 import { BreakpointValue } from './breakpointValue';
 
-export type Color = 'red' | 'blue';
+export type Color = 'red' | 'blue' | string;
 export type FontFamily =
     | 'Inter_300Light'
     | 'Inter_400Regular'

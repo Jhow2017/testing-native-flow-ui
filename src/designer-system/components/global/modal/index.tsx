@@ -1,10 +1,8 @@
 import React from 'react';
 import { Modal, ModalBaseProps } from 'react-native';
 
-import { DsBox } from '@ds/layout';
-import { DsBoxType } from '@ds/layout/box';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { DsText } from '@ds/components/typography';
+import { DsBox } from '@ds/components/layout';
+import { DsBoxType } from '@ds/components/layout/box';
 import DsIcon from '../icon';
 
 interface DsModalProps extends ModalBaseProps, DsBoxType {
