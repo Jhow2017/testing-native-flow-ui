@@ -32,7 +32,8 @@
     "react-native-screens": "~3.22.0",
     "react-native-unistyles": "^1.2.0",
     "react-native-web": "~0.19.6",
-    "styled-components": "^6.0.8"
+    "styled-components": "^6.0.8",
+    "testeeee2024444": "^0.1.14"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
