@@ -7,7 +7,7 @@ import {
     ViewStyle,
 } from 'react-native';
 import { DsText } from '@ds/components/typography';
-import { filterProps } from 'src/utils/filterProps';
+import { filterProps } from '@ds/core/utils/filterProps';
 
 interface DsLinkType extends TouchableOpacityProps, TextStyle, ViewStyle {
     url?: string;

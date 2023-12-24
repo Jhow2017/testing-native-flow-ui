@@ -2,7 +2,7 @@ import React, { useState, forwardRef } from 'react';
 import { TextInput, TextInputProps, ViewStyle } from 'react-native';
 
 //utils
-import { transformPlaceholder } from 'src/utils/transformPlaceholder';
+import { transformPlaceholder } from '@ds/core/utils/transformPlaceholder';
 
 //types
 import { DsInputProps } from './type';
