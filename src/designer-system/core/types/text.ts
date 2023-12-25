@@ -7,7 +7,7 @@ import { BaseFlexTypes } from './flex';
 type TextPropsPorps = {
     [Property in keyof TextProps]?: BreakpointValue<TextProps[Property]>;
 };
-type TextStyleProps = {
+export type TextStyleProps = {
     [Property in keyof TextStyle]?: BreakpointValue<TextStyle[Property]>;
 };
 
