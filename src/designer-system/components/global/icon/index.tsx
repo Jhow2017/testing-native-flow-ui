@@ -1,62 +1,14 @@
-import React, { ReactNode } from 'react';
-import {
-    FlexStyle,
-    TouchableOpacity,
-    TouchableOpacityProps,
-    Insets,
-    TextStyle,
-} from 'react-native';
-import Svg, { G, Path, Rect, Defs, ClipPath } from 'react-native-svg';
+import React from 'react';
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
 
 //components
 import { DsText } from '@ds/components/typography';
-import { DsFlex } from '@ds/layout';
+import { DsFlex } from '@ds/components/layout';
 
 //types external
-import type { ComponentMounterType } from '@ds/core/component-mounter';
+import { DsIconType } from './types';
 
-export type IconsType =
-    | 'bille'
-    | 'spotify'
-    | 'moon'
-    | 'sun'
-    | 'arrow-left'
-    | 'arrow-right'
-    | 'arrow-top'
-    | 'apple-logo'
-    | 'google-logo'
-    | 'eye-hide'
-    | 'eye-show'
-    | 'more'
-    | 'settings'
-    | 'search'
-    | 'search-active'
-    | 'player'
-    | 'favorite-active'
-    | 'favorite-outline'
-    | 'profile-active'
-    | 'profile-outline'
-    | 'home'
-    | 'home-active'
-    | 'repeate'
-    | 'previous'
-    | 'next'
-    | 'pause'
-    | 'shuffle'
-    | 'more-horizontal'
-    | 'close';
-
-interface DsIconType
-    extends TouchableOpacityProps,
-        FlexStyle,
-        ComponentMounterType {
-    children?: ReactNode;
-    icon: IconsType;
-    size?: number;
-    color?: string;
-    hitSlop?: Insets;
-    stylesText?: Omit<TextStyle, 'fontFamily'>;
-}
 const DsIcon: React.FC<DsIconType> = (props) => {
     const { icon, size = 64, stylesText, color, children, ...attr } = props;
 
@@ -72,11 +24,9 @@ const DsIcon: React.FC<DsIconType> = (props) => {
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
+            style={{ ...attr }}
         >
-            <TouchableOpacity
-                {...(attr as TouchableOpacityProps)}
-                style={{ ...attr }}
-            >
+            <TouchableOpacity {...(props as TouchableOpacityProps)}>
                 {icon === 'close' && (
                     <DsText
                         color="#4D4D4D"
