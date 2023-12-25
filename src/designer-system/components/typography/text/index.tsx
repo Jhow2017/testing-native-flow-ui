@@ -7,9 +7,11 @@ import { createStyleSheet, useStyles } from '@ds/config/unistyles';
 // types
 import { DsTextTypes } from './types';
 
+// utils
+import { filterTextStyles } from '@ds/core/utils/filterTextStyles';
+
 // styles
 import { StyledText } from './styles';
-import { filterTextStyles } from '@ds/core/utils/filterTextStyles';
 
 const DsText: React.FC<DsTextTypes> = (props) => {
     const { children, numberOfLines, ellipsizeMode, _css, ...rest } = props;
