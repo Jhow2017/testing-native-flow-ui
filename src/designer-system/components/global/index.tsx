@@ -1,2 +1,4 @@
 import DsIcon from './icon';
-export { DsIcon };
+import DsModal from './modal';
+
+export { DsIcon, DsModal };
