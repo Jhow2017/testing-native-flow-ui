@@ -1,42 +1,12 @@
-import React, { ReactNode, useEffect } from 'react';
-import { MotiView, useAnimationState, MotiProps } from 'moti';
+import React, { useEffect } from 'react';
+import { MotiView, useAnimationState } from 'moti';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-type DynamicModalProps = {
-    children: ReactNode;
-    visible: boolean;
-    onClose: () => void;
-    animation?: 'top' | 'right' | 'bottom' | 'left' | 'fade';
-} & MotiProps;
+// type
+import { DynamicModalProps } from './type';
 
-const animations = {
-    right: {
-        from: { opacity: 0, translateX: 100 },
-        open: { opacity: 1, translateX: 0 },
-        closed: { opacity: 0, translateX: 100 },
-    },
-    left: {
-        from: { opacity: 0, translateX: -100 },
-        open: { opacity: 1, translateX: 0 },
-        closed: { opacity: 0, translateX: -100 },
-    },
-    top: {
-        from: { opacity: 0, translateY: -100 },
-        open: { opacity: 1, translateY: 0 },
-        closed: { opacity: 0, translateY: -100 },
-    },
-    bottom: {
-        from: { opacity: 0, translateY: 100 },
-        open: { opacity: 1, translateY: 0 },
-        closed: { opacity: 0, translateY: 100 },
-    },
-
-    fade: {
-        from: { opacity: 0 },
-        open: { opacity: 1 },
-        closed: { opacity: 0 },
-    },
-};
+// data animations
+import { animations } from './animations';
 
 const DsModal: React.FC<DynamicModalProps> = (props) => {
     const { visible, onClose, children, animation = 'fade', ...attr } = props;
@@ -53,10 +23,9 @@ const DsModal: React.FC<DynamicModalProps> = (props) => {
         modalAnimationState.transitionTo(visible ? 'open' : 'closed');
     }, [visible]);
 
-    // Esta função é chamada quando a animação de fechamento é concluída
     const handleAnimationComplete = () => {
         if (modalAnimationState.current === 'closed') {
-            onClose(); // Chamada do callback onClose
+            onClose();
         }
     };
 
