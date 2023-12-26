@@ -16,7 +16,6 @@ import { ICONS } from './icons';
 
 //components
 import { DsText } from '@ds/components/typography';
-import { DsFlex } from '@ds/components/layout';
 
 const DsIcon: React.FC<DsIconType> = (props) => {
     const {
@@ -49,19 +48,13 @@ const DsIcon: React.FC<DsIconType> = (props) => {
         attr.style instanceof Array ? attr.style : [attr.style];
 
     return (
-        <DsFlex
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
+        <TouchableOpacity
+            {...(props as TouchableOpacityProps)}
             style={[styles.flexStyle, ...additionalStyles, platformStyles]}
         >
-            <TouchableOpacity {...(props as TouchableOpacityProps)}>
-                <IconComponent size={iconSize as any} color={iconColor} />
-            </TouchableOpacity>
-
+            <IconComponent size={iconSize as any} color={iconColor} />
             {children && (
                 <DsText
-                    marginTop={16}
                     color={'#DADADA'}
                     fontSize={17}
                     fontWeight="700"
@@ -71,7 +64,7 @@ const DsIcon: React.FC<DsIconType> = (props) => {
                     {children}
                 </DsText>
             )}
-        </DsFlex>
+        </TouchableOpacity>
     );
 };
 
