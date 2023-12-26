@@ -1,13 +1,22 @@
 import React from 'react';
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import {
+    Platform,
+    TouchableOpacity,
+    TouchableOpacityProps,
+} from 'react-native';
+
+//types external
+import { DsIconType, sizeMapping } from './types';
+
+// config
+import { createStyleSheet, useStyles } from '@ds/config/unistyles';
+
+// all Icons
+import { ICONS } from './icons';
 
 //components
 import { DsText } from '@ds/components/typography';
 import { DsFlex } from '@ds/components/layout';
-
-//types external
-import { DsIconType, sizeMapping } from './types';
-import { ICONS } from './icons';
 
 const DsIcon: React.FC<DsIconType> = (props) => {
     const {
@@ -28,12 +37,23 @@ const DsIcon: React.FC<DsIconType> = (props) => {
     const iconSize = fontSize ?? sizeMapping[size];
     const iconColor = (color as string) || '#000';
 
+    const stylesheet = createStyleSheet(() => ({
+        flexStyle: {
+            ...attr,
+        },
+    }));
+
+    const { styles } = useStyles(stylesheet);
+    const platformStyles = attr?._platform ? attr?._platform(Platform) : {};
+    const additionalStyles: any =
+        attr.style instanceof Array ? attr.style : [attr.style];
+
     return (
         <DsFlex
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
-            style={{ ...attr }}
+            style={[styles.flexStyle, ...additionalStyles, platformStyles]}
         >
             <TouchableOpacity {...(props as TouchableOpacityProps)}>
                 <IconComponent size={iconSize as any} color={iconColor} />
