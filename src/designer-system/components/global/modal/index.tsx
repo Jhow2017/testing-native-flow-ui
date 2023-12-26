@@ -1,72 +1,121 @@
-import useModalAnimation from '@ds/core/hook/useModalAnimation';
-import React, { ReactNode } from 'react';
-import {
-    View,
-    Text,
-    StyleSheet,
-    TouchableOpacity,
-    Animated,
-    GestureResponderEvent,
-} from 'react-native';
+import React, { ReactNode, useEffect } from 'react';
+import { MotiView, useAnimationState, MotiProps } from 'moti';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-interface DsModalTypes {
+type DynamicModalProps = {
     children: ReactNode;
-    show: boolean;
-    close: (event: GestureResponderEvent) => void;
-}
+    visible: boolean;
+    onClose: () => void;
+    animation?: 'top' | 'right' | 'bottom' | 'left' | 'fade';
+} & MotiProps;
 
-const DsModal: React.FC<DsModalTypes> = ({ show, close, children }) => {
-    const animationState = useModalAnimation(show);
+const animations = {
+    right: {
+        from: { opacity: 0, translateX: 100 },
+        open: { opacity: 1, translateX: 0 },
+        closed: { opacity: 0, translateX: 100 },
+    },
+    left: {
+        from: { opacity: 0, translateX: -100 },
+        open: { opacity: 1, translateX: 0 },
+        closed: { opacity: 0, translateX: -100 },
+    },
+    top: {
+        from: { opacity: 0, translateY: -100 },
+        open: { opacity: 1, translateY: 0 },
+        closed: { opacity: 0, translateY: -100 },
+    },
+    bottom: {
+        from: { opacity: 0, translateY: 100 },
+        open: { opacity: 1, translateY: 0 },
+        closed: { opacity: 0, translateY: 100 },
+    },
+
+    fade: {
+        from: { opacity: 0 },
+        open: { opacity: 1 },
+        closed: { opacity: 0 },
+    },
+};
+
+const DsModal: React.FC<DynamicModalProps> = (props) => {
+    const { visible, onClose, children, animation = 'fade', ...attr } = props;
+
+    const currentAnimation = animations[animation];
+
+    const modalAnimationState = useAnimationState({
+        from: currentAnimation.from,
+        open: currentAnimation.open,
+        closed: currentAnimation.closed,
+    });
+
+    useEffect(() => {
+        modalAnimationState.transitionTo(visible ? 'open' : 'closed');
+    }, [visible]);
+
+    // Esta função é chamada quando a animação de fechamento é concluída
+    const handleAnimationComplete = () => {
+        if (modalAnimationState.current === 'closed') {
+            onClose(); // Chamada do callback onClose
+        }
+    };
+
     return (
-        <Animated.View
-            style={[
-                styles.container,
-                {
-                    opacity: animationState.opacity,
-                    transform: [{ translateY: animationState.container }],
-                },
-            ]}
+        <MotiView
+            state={modalAnimationState}
+            style={styles.container}
+            transition={{
+                type: 'timing',
+                duration: 500,
+            }}
+            onDidAnimate={(property, finished) => {
+                if (property === 'opacity' && finished) {
+                    handleAnimationComplete();
+                }
+            }}
+            {...(attr as any)}
         >
-            <Animated.View
-                style={[
-                    styles.modal,
-                    {
-                        transform: [{ translateY: animationState.modal }],
-                    },
-                ]}
-            >
+            <View style={styles.modal}>
                 <View style={styles.indicator} />
-
-                {children}
-
-                {close && (
-                    <TouchableOpacity style={styles.btn} onPress={close}>
-                        <Text style={{ color: '#fff' }}>Close</Text>
-                    </TouchableOpacity>
-                )}
-            </Animated.View>
-        </Animated.View>
+                <View style={styles.content}>{children}</View>
+                <TouchableOpacity
+                    style={styles.btn}
+                    onPress={() => modalAnimationState.transitionTo('closed')}
+                >
+                    <Text style={{ color: '#fff' }}>Close</Text>
+                </TouchableOpacity>
+            </View>
+        </MotiView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(22, 11, 11, 0.5)',
+        zIndex: 9999,
+        position: 'absolute',
         width: '100%',
         height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        position: 'absolute',
-        zIndex: 99999,
     },
     modal: {
+        flex: 1,
+        justifyContent: 'space-between', // Adiciona espaço entre o conteúdo e o botão
         bottom: 0,
         position: 'absolute',
-        height: '50%',
         backgroundColor: '#fff',
         width: '100%',
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
+        paddingTop: 25, // Adiciona padding na parte superior
+        paddingBottom: 25, // Adiciona padding na parte inferior
         paddingLeft: 25,
         paddingRight: 25,
+    },
+    content: {
+        // Estilo para o conteúdo do modal
+        flex: 1, // Isso permite que o conteúdo ocupe o espaço disponível
     },
     indicator: {
         width: 50,
@@ -75,10 +124,6 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         alignSelf: 'center',
         marginTop: 5,
-    },
-    text: {
-        marginTop: 50,
-        textAlign: 'center',
     },
     btn: {
         width: '100%',
