@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
+import type { SvgProps } from 'react-native-svg';
 import { Insets, TouchableOpacityProps } from 'react-native';
-import { SvgProps } from 'react-native-svg';
 
-// type
+// type local
 import type { Color } from '@ds/core/types/theme';
 import type { BaseButtonTypesProps } from '@ds/core/types/icon';
-import { DsTextTypes } from '@ds/components/typography/text/types';
+import type { DsTextTypes } from '@ds/components/typography/text/types';
 
 export type IconsType =
     | 'bille'
