@@ -1,4 +1,5 @@
-import { DsBox, DsFlex } from '@ds/components/layout';
+import { DsIcon } from '@ds/components/global';
+import { DsFlex } from '@ds/components/layout';
 import { DsText } from '@ds/components/typography';
 
 export default function Home() {
@@ -22,6 +23,13 @@ export default function Home() {
             //     md: 'background-color: green; ',
             // }}
         >
+            <DsIcon
+                icon="close"
+                color="#fff"
+                fontSize={24}
+                backgroundColor={'#000'}
+            />
+
             <DsText
                 color="#fff"
                 textTransform="capitalize"
