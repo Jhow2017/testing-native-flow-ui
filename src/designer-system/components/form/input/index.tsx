@@ -8,7 +8,7 @@ import { transformPlaceholder } from '@ds/core/utils/transformPlaceholder';
 import { DsInputProps } from './type';
 
 //@ds
-import { DsFlex } from '@ds/layout';
+import { DsFlex } from '@ds/components/layout';
 import DsIcon from '@ds/components/global/icon';
 import ComponentMounter from '@ds/core/component-mounter';
 import { DsText } from '@ds/components/typography';
@@ -52,7 +52,7 @@ const DsInput = forwardRef<TextInput, DsInputProps>(
                         <DsIcon
                             icon={showPassword ? 'eye-show' : 'eye-hide'}
                             position="absolute"
-                            size={26}
+                            size={'medium'}
                             right={30}
                             color={'#5B5B5B'}
                             onPress={() => setShowPassword((prev) => !prev)}
@@ -63,7 +63,7 @@ const DsInput = forwardRef<TextInput, DsInputProps>(
                         <DsIcon
                             icon={'search'}
                             position="absolute"
-                            size={26}
+                            size={'medium'}
                             right={30}
                             color={'#fff'}
                         />
