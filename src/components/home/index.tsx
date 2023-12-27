@@ -1,12 +1,7 @@
-import { useState } from 'react';
-
-import { DsIcon, DsModal } from '@ds/components/global';
-import { DsBox, DsFlex } from '@ds/components/layout';
-import { DsText } from '@ds/components/typography';
+import { DsLink } from '@ds/components/global';
+import { DsBox } from '@ds/components/layout';
 
 export default function Home() {
-    const [isModalVisible, setModalVisible] = useState(false);
-
     return (
         <DsBox
             flex={1}
@@ -28,88 +23,9 @@ export default function Home() {
             //     md: 'background-color: green; ',
             // }}
         >
-            <DsIcon
-                icon="close"
-                color="#fff"
-                fontSize={24}
-                onPress={() => setModalVisible(true)}
-                //backgroundColor={'#000'}
-                // marginTop={{
-                //     xs: 100,
-                // }}
-                // style={{
-                //     backgroundColor: 'green',
-                // }}
-                // _platform={(e) => ({
-                //     backgroundColor: e.OS === 'ios' ? 'blue' : 'red',
-                //     marginTop: e.OS === 'ios' ? 150 : 300,
-                // })}
-                flexDirection={{
-                    xs: 'row',
-                }}
-                alignItems={'center'}
-                gap={2}
-                stylesText={{
-                    color: 'red',
-                    fontSize: 18,
-                }}
-            >
-                Abrir o Modal
-            </DsIcon>
-            <DsText
-                color="#fff"
-                textTransform="capitalize"
-                numberOfLines={1}
-                ellipsizeMode="tail"
-                width={'80%'}
-                fontSize={24}
-                // backgroundColor={{
-                //     ':w[200,500]': 'red',
-                //     ':w[500,900]': 'blue',
-                // }}
-                // _platform={(e) => ({
-                //     backgroundColor: e.OS === 'ios' ? 'green' : 'red',
-                //     marginTop: e.OS === 'ios' ? 150 : 300,
-                // })}
-                // _css={'background-color: red;'}
-                // _css={{
-                //     xs: 'background-color: red;',
-                //     md: 'background-color: green; ',
-                // }}
-                // style={{
-                //     backgroundColor: 'red',
-                // }}
-            >
-                texto bem grande texto bem grande texto bem grande texto bem
-                grande
-            </DsText>
-
-            <DsModal
-                visible={isModalVisible}
-                onClose={() => setModalVisible(false)}
-                backgroundColor={{
-                    xs: '#fff',
-                    md: 'red',
-                }}
-            >
-                <DsText>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc vitae massa odio. Quisque ante sem, tempor eget massa
-                    vel, mollis tincidunt metus. Ut sed felis lectus. Nam semper
-                    molestie urna, quis ultricies quam semper ut. Maecenas
-                    aliquet id urna a convallis. Class aptent taciti sociosqu ad
-                    litora torquent per conubia nostra, per inceptos himenaeos.
-                    Maecenas leo lectus, dictum vitae erat eget, luctus dapibus
-                    sapien. Integer at hendrerit quam. Vivamus tempor, arcu non
-                    fringilla laoreet, enim nibh porttitor enim, eget
-                    pellentesque eros nulla congue neque. Suspendisse et
-                    lobortis enim, nec fermentum est. Aliquam accumsan viverra
-                    vehicula. Proin tempus sagittis auctor. Vivamus quam ligula,
-                    laoreet eget eros et, hendrerit iaculis risus. Nam a nulla
-                    in purus fermentum rhoncus eu et erat. Aliquam tempus felis
-                    lorem, id hendrerit tortor vestibulum ac.
-                </DsText>
-            </DsModal>
+            <DsLink href="/link/">Link</DsLink>
+            <DsLink href="/modal/">Modal</DsLink>
+            <DsLink href="/text/">Text</DsLink>
         </DsBox>
     );
 }
