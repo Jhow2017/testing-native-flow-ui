@@ -10,7 +10,6 @@ export default function Text() {
             justifyContent={{ xs: 'center' }}
             alignItems={{ xs: 'center', md: 'center' }}
             backgroundColor={{ xs: 'blue', md: 'blue' }}
-            // backgroundColor={{
         >
             <DsText
                 color="#fff"
