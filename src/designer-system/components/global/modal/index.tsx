@@ -1,6 +1,6 @@
 import React from 'react';
 import { MotiView } from 'moti';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
 // type
 import { DsModalTypes } from './type';
@@ -33,7 +33,15 @@ const DsModal: React.FC<DsModalTypes> = (props) => {
     return (
         <MotiView
             state={modalAnimationState}
-            style={styles.container}
+            style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'rgba(22, 11, 11, 0.5)',
+                zIndex: 9999,
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+            }}
             transition={{
                 type: transition?.type ?? 'timing',
                 duration: transition?.duration ?? 500,
@@ -58,7 +66,15 @@ const DsModal: React.FC<DsModalTypes> = (props) => {
 
                 {onClose && (
                     <TouchableOpacity
-                        style={styles.btn}
+                        style={{
+                            width: '100%',
+                            height: 50,
+                            borderRadius: 10,
+                            backgroundColor: '#9b59b6',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            marginTop: 30,
+                        }}
                         onPress={() => {
                             modalAnimationState.transitionTo('closed');
                             onClose();
@@ -71,26 +87,5 @@ const DsModal: React.FC<DsModalTypes> = (props) => {
         </MotiView>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(22, 11, 11, 0.5)',
-        zIndex: 9999,
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-    },
-    btn: {
-        width: '100%',
-        height: 50,
-        borderRadius: 10,
-        backgroundColor: '#9b59b6',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 30,
-    },
-});
 
 export default DsModal;
