@@ -1,64 +1,24 @@
-import { useState, useEffect } from 'react';
-import { Animated, Dimensions } from 'react-native';
+import { useEffect } from 'react';
+import { useAnimationState } from 'moti';
 
-const { height } = Dimensions.get('window');
+// types
+import type { AnimationType } from '@ds/components/global/modal/type';
+import { animations } from '@ds/components/global/modal/animations';
 
-const useModalAnimation = (isVisible: boolean) => {
-    const [state, setState] = useState({
-        opacity: new Animated.Value(0),
-        container: new Animated.Value(height),
-        modal: new Animated.Value(height),
+const useModalAnimation = (visible: boolean, animationType: AnimationType) => {
+    const currentAnimation = animations[animationType];
+
+    const modalAnimationState = useAnimationState({
+        from: currentAnimation.from,
+        open: currentAnimation.open,
+        closed: currentAnimation.closed,
     });
 
-    const openModal = () => {
-        Animated.sequence([
-            Animated.timing(state.container, {
-                toValue: 0,
-                duration: 100,
-                useNativeDriver: false,
-            }),
-            Animated.timing(state.opacity, {
-                toValue: 1,
-                duration: 300,
-                useNativeDriver: false,
-            }),
-            Animated.spring(state.modal, {
-                toValue: 0,
-                bounciness: 5,
-                useNativeDriver: true,
-            }),
-        ]).start();
-    };
-
-    const closeModal = () => {
-        Animated.sequence([
-            Animated.timing(state.modal, {
-                toValue: height,
-                duration: 250,
-                useNativeDriver: true,
-            }),
-            Animated.timing(state.opacity, {
-                toValue: 0,
-                duration: 300,
-                useNativeDriver: false,
-            }),
-            Animated.timing(state.container, {
-                toValue: height,
-                duration: 100,
-                useNativeDriver: false,
-            }),
-        ]).start();
-    };
-
     useEffect(() => {
-        if (isVisible) {
-            openModal();
-        } else {
-            closeModal();
-        }
-    }, [isVisible]);
+        modalAnimationState.transitionTo(visible ? 'open' : 'closed');
+    }, [visible, modalAnimationState]);
 
-    return state;
+    return modalAnimationState;
 };
 
 export default useModalAnimation;
