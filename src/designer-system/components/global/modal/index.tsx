@@ -4,10 +4,13 @@ import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 // type
 import { DsModalTypes } from './type';
+import type { DsBoxType } from '@ds/components/layout/box';
 
+// hook
 import useModalAnimation from '@ds/core/hook/useModalAnimation';
+
+// @Ds
 import { DsBox } from '@ds/components/layout';
-import { DsBoxType } from '@ds/components/layout/box';
 
 const DsModal: React.FC<DsModalTypes> = (props) => {
     const {
@@ -35,7 +38,7 @@ const DsModal: React.FC<DsModalTypes> = (props) => {
                 type: transition?.type ?? 'timing',
                 duration: transition?.duration ?? 500,
             }}
-            onDidAnimate={(property: string, finished: boolean) => {
+            onDidAnimate={(property, finished) => {
                 if (property === 'opacity' && finished) {
                     handleAnimationComplete();
                 }
@@ -52,12 +55,18 @@ const DsModal: React.FC<DsModalTypes> = (props) => {
                 {...(attr as DsBoxType)}
             >
                 <DsBox flex={1}>{children}</DsBox>
-                <TouchableOpacity
-                    style={styles.btn}
-                    onPress={() => modalAnimationState.transitionTo('closed')}
-                >
-                    <Text style={{ color: '#fff' }}>Close</Text>
-                </TouchableOpacity>
+
+                {onClose && (
+                    <TouchableOpacity
+                        style={styles.btn}
+                        onPress={() => {
+                            modalAnimationState.transitionTo('closed');
+                            onClose();
+                        }}
+                    >
+                        <Text style={{ color: '#fff' }}>Close</Text>
+                    </TouchableOpacity>
+                )}
             </DsBox>
         </MotiView>
     );
