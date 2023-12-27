@@ -1,27 +1,25 @@
-import React, { useEffect } from 'react';
-import { MotiView, useAnimationState } from 'moti';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { MotiView } from 'moti';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 // type
-import { DynamicModalProps } from './type';
+import { DsModalTypes } from './type';
 
-// data animations
-import { animations } from './animations';
+import useModalAnimation from '@ds/core/hook/useModalAnimation';
+import { DsBox } from '@ds/components/layout';
+import { DsBoxType } from '@ds/components/layout/box';
 
-const DsModal: React.FC<DynamicModalProps> = (props) => {
-    const { visible, onClose, children, animation = 'fade', ...attr } = props;
+const DsModal: React.FC<DsModalTypes> = (props) => {
+    const {
+        visible,
+        onClose,
+        children,
+        animation = 'fade',
+        transition,
+        ...attr
+    } = props;
 
-    const currentAnimation = animations[animation];
-
-    const modalAnimationState = useAnimationState({
-        from: currentAnimation.from,
-        open: currentAnimation.open,
-        closed: currentAnimation.closed,
-    });
-
-    useEffect(() => {
-        modalAnimationState.transitionTo(visible ? 'open' : 'closed');
-    }, [visible]);
+    const modalAnimationState = useModalAnimation(visible, animation);
 
     const handleAnimationComplete = () => {
         if (modalAnimationState.current === 'closed') {
@@ -34,26 +32,33 @@ const DsModal: React.FC<DynamicModalProps> = (props) => {
             state={modalAnimationState}
             style={styles.container}
             transition={{
-                type: 'timing',
-                duration: 500,
+                type: transition?.type ?? 'timing',
+                duration: transition?.duration ?? 500,
             }}
-            onDidAnimate={(property, finished) => {
+            onDidAnimate={(property: string, finished: boolean) => {
                 if (property === 'opacity' && finished) {
                     handleAnimationComplete();
                 }
             }}
-            {...(attr as any)}
         >
-            <View style={styles.modal}>
-                <View style={styles.indicator} />
-                <View style={styles.content}>{children}</View>
+            <DsBox
+                justifyContent="space-between"
+                position="absolute"
+                backgroundColor="#fff"
+                height="auto"
+                borderRadius={24}
+                padding={24}
+                marginHorizontal={12}
+                {...(attr as DsBoxType)}
+            >
+                <DsBox flex={1}>{children}</DsBox>
                 <TouchableOpacity
                     style={styles.btn}
                     onPress={() => modalAnimationState.transitionTo('closed')}
                 >
                     <Text style={{ color: '#fff' }}>Close</Text>
                 </TouchableOpacity>
-            </View>
+            </DsBox>
         </MotiView>
     );
 };
@@ -67,32 +72,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: '100%',
         height: '100%',
-    },
-    modal: {
-        flex: 1,
-        justifyContent: 'space-between', // Adiciona espaço entre o conteúdo e o botão
-        bottom: 0,
-        position: 'absolute',
-        backgroundColor: '#fff',
-        width: '100%',
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        paddingTop: 25, // Adiciona padding na parte superior
-        paddingBottom: 25, // Adiciona padding na parte inferior
-        paddingLeft: 25,
-        paddingRight: 25,
-    },
-    content: {
-        // Estilo para o conteúdo do modal
-        flex: 1, // Isso permite que o conteúdo ocupe o espaço disponível
-    },
-    indicator: {
-        width: 50,
-        height: 5,
-        backgroundColor: '#ccc',
-        borderRadius: 50,
-        alignSelf: 'center',
-        marginTop: 5,
     },
     btn: {
         width: '100%',

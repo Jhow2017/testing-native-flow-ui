@@ -1,8 +1,18 @@
 import { ReactNode } from 'react';
 import { MotiProps } from 'moti';
-export type DynamicModalProps = {
+import { DsBoxType } from '@ds/components/layout/box';
+
+export type AnimationType = 'top' | 'right' | 'bottom' | 'left' | 'fade';
+export type TransitionTypes = 'timing' | 'spring';
+
+export type DsModalTypes = {
     children: ReactNode;
     visible: boolean;
     onClose: () => void;
-    animation?: 'top' | 'right' | 'bottom' | 'left' | 'fade';
-} & MotiProps;
+    animation?: AnimationType;
+    transition?: {
+        type: TransitionTypes;
+        duration: number;
+    };
+} & DsBoxType &
+    MotiProps;
