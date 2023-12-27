@@ -3,7 +3,7 @@ import { MotiView } from 'moti';
 import { Text, TouchableOpacity } from 'react-native';
 
 // type
-import { DsModalTypes } from './type';
+import type { DsModalTypes } from './type';
 import type { DsBoxType } from '@ds/components/layout/box';
 
 // hook
