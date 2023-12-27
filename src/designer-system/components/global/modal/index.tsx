@@ -31,60 +31,64 @@ const DsModal: React.FC<DsModalTypes> = (props) => {
     };
 
     return (
-        <MotiView
-            state={modalAnimationState}
-            style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'rgba(22, 11, 11, 0.5)',
-                zIndex: 9999,
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-            }}
-            transition={{
-                type: transition?.type ?? 'timing',
-                duration: transition?.duration ?? 500,
-            }}
-            onDidAnimate={(property, finished) => {
-                if (property === 'opacity' && finished) {
-                    handleAnimationComplete();
-                }
-            }}
-        >
-            <DsBox
-                justifyContent="space-between"
-                position="absolute"
-                backgroundColor="#fff"
-                height="auto"
-                borderRadius={24}
-                padding={24}
-                marginHorizontal={12}
-                {...(attr as DsBoxType)}
-            >
-                <DsBox flex={1}>{children}</DsBox>
-
-                {onClose && (
-                    <TouchableOpacity
-                        style={{
-                            width: '100%',
-                            height: 50,
-                            borderRadius: 10,
-                            backgroundColor: '#9b59b6',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            marginTop: 30,
-                        }}
-                        onPress={() => {
-                            modalAnimationState.transitionTo('closed');
-                            onClose();
-                        }}
+        <>
+            {visible && (
+                <MotiView
+                    state={modalAnimationState}
+                    style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: 'rgba(22, 11, 11, 0.5)',
+                        zIndex: 9999,
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                    }}
+                    transition={{
+                        type: transition?.type ?? 'timing',
+                        duration: transition?.duration ?? 500,
+                    }}
+                    onDidAnimate={(property, finished) => {
+                        if (property === 'opacity' && finished) {
+                            handleAnimationComplete();
+                        }
+                    }}
+                >
+                    <DsBox
+                        justifyContent="space-between"
+                        position="absolute"
+                        backgroundColor="#fff"
+                        height="auto"
+                        borderRadius={24}
+                        padding={24}
+                        marginHorizontal={12}
+                        {...(attr as DsBoxType)}
                     >
-                        <Text style={{ color: '#fff' }}>Close</Text>
-                    </TouchableOpacity>
-                )}
-            </DsBox>
-        </MotiView>
+                        <DsBox flex={1}>{children}</DsBox>
+
+                        {onClose && (
+                            <TouchableOpacity
+                                style={{
+                                    width: '100%',
+                                    height: 50,
+                                    borderRadius: 10,
+                                    backgroundColor: '#9b59b6',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    marginTop: 30,
+                                }}
+                                onPress={() => {
+                                    modalAnimationState.transitionTo('closed');
+                                    onClose();
+                                }}
+                            >
+                                <Text style={{ color: '#fff' }}>Close</Text>
+                            </TouchableOpacity>
+                        )}
+                    </DsBox>
+                </MotiView>
+            )}
+        </>
     );
 };
 
