@@ -17,7 +17,7 @@ export default function Text() {
                 numberOfLines={1}
                 ellipsizeMode="tail"
                 width={'80%'}
-                fontSize={24}
+                fontSize={{ xs: 32, md: 50 }}
                 // backgroundColor={{
                 //     ':w[200,500]': 'red',
                 //     ':w[500,900]': 'blue',
