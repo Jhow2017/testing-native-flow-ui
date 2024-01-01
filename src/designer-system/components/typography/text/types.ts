@@ -13,6 +13,4 @@ export type DsTextTypes = BaseFlexTypes &
         as?: 'p' | 'small' | 'span' | 'strong' | 'b';
         variant?: 'normal' | 'bold';
         size?: 'xxlarge' | 'xlarge' | 'large';
-        _platform?: (platform: typeof Platform) => TextStyle;
-        _css?: BreakpointValue<string>;
     };
