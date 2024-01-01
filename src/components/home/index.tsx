@@ -8,12 +8,23 @@ export default function Home() {
             width={'100%'}
             justifyContent={{ xs: 'center' }}
             alignItems={{ xs: 'center', md: 'center' }}
-            backgroundColor={{ xs: 'blue', md: 'blue' }}
+            backgroundColor={{
+                xs: 'blue',
+                sm: 'red',
+            }}
         >
-            <DsLink href="/link/">Link</DsLink>
-            <DsLink href="/modal/">Modal</DsLink>
-            <DsLink href="/text/">Text</DsLink>
-            <DsLink href="/box/">Box</DsLink>
+            <DsLink href="/link/" fontSize={{ xs: 32, sm: 50 }}>
+                Link
+            </DsLink>
+            <DsLink href="/modal/" fontSize={{ xs: 32, sm: 50 }}>
+                Modal
+            </DsLink>
+            <DsLink href="/text/" fontSize={{ xs: 32, sm: 50 }}>
+                Text
+            </DsLink>
+            <DsLink href="/box/" fontSize={{ xs: 32, sm: 50 }}>
+                Box
+            </DsLink>
         </DsBox>
     );
 }
