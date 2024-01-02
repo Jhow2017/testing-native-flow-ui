@@ -23,7 +23,9 @@ export default function Box() {
             //     md: 'background-color: green; ',
             // }}
         >
-            <DsLink href="/">Voltar</DsLink>
+            <DsLink href="/" fontSize={32}>
+                Voltar
+            </DsLink>
         </DsBox>
     );
 }

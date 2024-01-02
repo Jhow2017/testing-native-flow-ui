@@ -39,7 +39,7 @@ export default function Text() {
                 grande
             </DsText>
 
-            <DsLink href="/" fontSize={50}>
+            <DsLink href="/" fontSize={32}>
                 voltar
             </DsLink>
         </DsBox>

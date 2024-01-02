@@ -82,7 +82,9 @@ export default function Home() {
                     lorem, id hendrerit tortor vestibulum ac.
                 </DsText>
             </DsModal>
-            <DsLink href="/">Voltar</DsLink>
+            <DsLink href="/" fontSize={32}>
+                Voltar
+            </DsLink>
         </DsBox>
     );
 }
