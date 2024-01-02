@@ -9,6 +9,7 @@ export default function Home() {
             width={'100%'}
             justifyContent={{ xs: 'center' }}
             alignItems={{ xs: 'center', md: 'center' }}
+            flexDirection={'column'}
             gap={4}
             // backgroundColor={{
             //     xs: 'red',
@@ -21,11 +22,21 @@ export default function Home() {
             <DsLink
                 href="/link/"
                 fontSize={{ xs: 32, sm: 50 }}
-                style={{ backgroundColor: 'green' }}
+                _platform={(e) => ({
+                    //backgroundColor: e.OS === 'ios' ? 'red' : 'blue',
+                    marginTop: e.OS === 'ios' ? 150 : 300,
+                })}
             >
                 Link
             </DsLink>
-            <DsLink href="/modal/" fontSize={{ xs: 32, sm: 50 }}>
+            <DsLink
+                href="/modal/"
+                fontSize={{ xs: 32, sm: 50 }}
+                _css={{
+                    xs: 'background-color: green;',
+                    md: 'background-color: white; ',
+                }}
+            >
                 Modal
             </DsLink>
             <DsLink href="/text/" fontSize={{ xs: 32, sm: 50 }}>
