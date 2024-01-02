@@ -1,8 +1,6 @@
 import React from 'react';
 import ComponentMounter from '@ds/core/component-mounter';
-import { ComponentMounterType } from '@ds/core/component-mounter/types';
-
-export interface DsBoxType extends ComponentMounterType {}
+import { DsBoxType } from './type';
 
 const DsBox: React.FC<DsBoxType> = (props) => {
     const { children, ...attr } = props;
