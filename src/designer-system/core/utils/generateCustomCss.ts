@@ -1,5 +1,6 @@
 import { Dimensions } from 'react-native';
 
+// config
 import { breakpoints } from '@ds/config/theme/breakpoints';
 
 // types
@@ -8,9 +9,15 @@ type Breakpoints = typeof breakpoints;
 type BreakpointKeys = keyof Breakpoints;
 
 const generateCustomCss = (breakpointCss: BreakpointValue<string>): string => {
+    // If breakpointCss is a string, returns directly
+    if (typeof breakpointCss === 'string') {
+        return breakpointCss;
+    }
+
     const screenWidth = Dimensions.get('window').width;
     let appliedStyles = '';
 
+    // Sort the breakpoints in descending order
     const sortedBreakpoints: BreakpointKeys[] = Object.keys(
         breakpoints
     ) as BreakpointKeys[];
@@ -24,7 +31,7 @@ const generateCustomCss = (breakpointCss: BreakpointValue<string>): string => {
                     appliedStyles += style;
                 }
             }
-            break;
+            break; // Stop at the first breakpoint that matches
         }
     }
 
