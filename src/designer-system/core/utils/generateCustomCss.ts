@@ -1,30 +1,34 @@
 import { Dimensions } from 'react-native';
-import { BreakpointValue } from '../types/breakpointValue';
+
 import { breakpoints } from '@ds/config/theme/breakpoints';
 
-const generateCustomCss = (cssBreakpoint: BreakpointValue<string>): string => {
-    const screenWidth = Dimensions.get('window').width;
-    const isValidStyle = (style: string) => {
-        // Basic validation example: check if it includes ":" and ";" indicating a style statement
-        return (
-            typeof style === 'string' &&
-            style.includes(':') &&
-            style.includes(';')
-        );
-    };
+// types
+import type { BreakpointValue } from '../types/breakpointValue';
+type Breakpoints = typeof breakpoints;
+type BreakpointKeys = keyof Breakpoints;
 
-    if (typeof cssBreakpoint === 'object') {
-        for (const [breakpoint, width] of Object.entries(breakpoints)) {
-            const style = cssBreakpoint[breakpoint];
-            if (screenWidth >= width && style && isValidStyle(style)) {
-                return style;
+const generateCustomCss = (breakpointCss: BreakpointValue<string>): string => {
+    const screenWidth = Dimensions.get('window').width;
+    let appliedStyles = '';
+
+    const sortedBreakpoints: BreakpointKeys[] = Object.keys(
+        breakpoints
+    ) as BreakpointKeys[];
+    sortedBreakpoints.sort((a, b) => breakpoints[b] - breakpoints[a]);
+
+    for (const breakpoint of sortedBreakpoints) {
+        if (screenWidth >= breakpoints[breakpoint]) {
+            if (typeof breakpointCss === 'object' && breakpointCss !== null) {
+                const style = breakpointCss[breakpoint];
+                if (typeof style === 'string') {
+                    appliedStyles += style;
+                }
             }
+            break;
         }
-    } else if (isValidStyle(cssBreakpoint)) {
-        return cssBreakpoint;
     }
 
-    return ''; // Returns an empty string if the style is not valid
+    return appliedStyles;
 };
 
 export default generateCustomCss;
