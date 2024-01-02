@@ -4,13 +4,9 @@ import { ComponentMounterType } from '@ds/core/component-mounter/types';
 
 export interface DsBoxType extends ComponentMounterType {}
 
-const DsFlex: React.FC<DsBoxType> = (props) => {
+const DsBox: React.FC<DsBoxType> = (props) => {
     const { children, ...attr } = props;
-    return (
-        <ComponentMounter {...attr} style={[attr.style]}>
-            {children}
-        </ComponentMounter>
-    );
+    return <ComponentMounter {...attr}>{children}</ComponentMounter>;
 };
 
-export default DsFlex;
+export default DsBox;
