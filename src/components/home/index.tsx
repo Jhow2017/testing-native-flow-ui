@@ -29,14 +29,7 @@ export default function Home() {
             >
                 Link
             </DsLink>
-            <DsLink
-                href="/modal/"
-                fontSize={{ xs: 32, sm: 50 }}
-                _css={{
-                    xs: 'background-color: green;',
-                    md: 'background-color: white; ',
-                }}
-            >
+            <DsLink href="/modal/" fontSize={{ xs: 32, sm: 50 }}>
                 Modal
             </DsLink>
             <DsLink href="/text/" fontSize={{ xs: 32, sm: 50 }}>
