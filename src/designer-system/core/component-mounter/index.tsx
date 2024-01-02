@@ -1,28 +1,20 @@
 import React from 'react';
 import { Platform } from 'react-native';
-
-// config
-import { createStyleSheet, useStyles } from '@ds/config/unistyles';
-
-// types
-import { ComponentMounterType } from './types';
-import { StyledComponents } from '../styles';
 import { LinkProps } from 'expo-router';
 
+// utils
+import createAndFilterStyles from '../utils/createAndFilterStyles';
+
+// types
+import type { ComponentMounterType } from './types';
+
 // styles
-//import { BaseStyleView } from '../styles';
+import { StyledComponents } from '../styles';
 
 const ComponentMounter: React.FC<ComponentMounterType> = (props) => {
     const { children, _platform, _css, href, as = 'View', ...rest } = props;
 
-    const stylesheet = createStyleSheet(() => ({
-        flexStyle: {
-            ...rest,
-        },
-    }));
-
-    const { styles } = useStyles(stylesheet);
-
+    const filteredFlexStyle = createAndFilterStyles(rest);
     const platformStyles = _platform ? _platform(Platform) : {};
     const additionalStyles: any =
         rest.style instanceof Array ? rest.style : [rest.style];
@@ -31,7 +23,7 @@ const ComponentMounter: React.FC<ComponentMounterType> = (props) => {
 
     return (
         <BaseStyleView
-            style={[styles.flexStyle, ...additionalStyles, platformStyles]}
+            style={[filteredFlexStyle, platformStyles, ...additionalStyles]}
             _css={_css}
             href={href as LinkProps<''>['href']}
         >
