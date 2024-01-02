@@ -27,10 +27,10 @@ export default function Text() {
                 //     marginTop: e.OS === 'ios' ? 150 : 300,
                 // })}
                 // _css={'background-color: red;'}
-                // _css={{
-                //     xs: 'background-color: red;',
-                //     md: 'background-color: green; ',
-                // }}
+                _css={{
+                    xs: 'background-color: black;',
+                    md: 'background-color: green; ',
+                }}
                 // style={{
                 //     backgroundColor: 'red',
                 // }}
@@ -39,7 +39,9 @@ export default function Text() {
                 grande
             </DsText>
 
-            <DsLink href="/">voltar</DsLink>
+            <DsLink href="/" fontSize={50}>
+                voltar
+            </DsLink>
         </DsBox>
     );
 }
