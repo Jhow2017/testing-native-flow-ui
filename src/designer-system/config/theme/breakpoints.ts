@@ -7,3 +7,6 @@ export const breakpoints = {
     superLarge: 2000,
     tvLike: 4000,
 } as const;
+
+type Breakpoints = typeof breakpoints;
+export type BreakpointKeys = keyof Breakpoints;
