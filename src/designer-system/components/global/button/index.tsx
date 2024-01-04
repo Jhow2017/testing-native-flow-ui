@@ -26,29 +26,26 @@ const DsButton: React.FC<DsButtonType> = (props) => {
         ...attr
     } = props;
 
-    // Estilos base que se aplicam a todas as variantes
     const styledBase = {
         padding: 10,
         borderRadius: 10,
-        justifyContent: 'center', // Centraliza horizontalmente no flex container
-        alignItems: 'center', // Centraliza verticalmente no flex container
-        flexDirection: 'row', // Organiza os filhos em linha
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
     };
 
-    // Estilos específicos para cada variante
     const buttonVariantStyles = {
         primary: { backgroundColor: 'blue' },
         secondary: { backgroundColor: 'green' },
         tertiary: { backgroundColor: 'orange' },
         quaternary: { backgroundColor: 'purple' },
-        'primary-dark': { backgroundColor: '#0D47A1' }, // Variação mais escura para 'primary'
-        'secondary-dark': { backgroundColor: '#2E7D32' }, // Variação mais escura para 'secondary'
-        'tertiary-dark': { backgroundColor: '#FF6F00' }, // Variação mais escura para 'tertiary'
-        'quaternary-dark': { backgroundColor: '#6A1B9A' }, // Variação mais escura para 'quaternary'
+        'primary-dark': { backgroundColor: '#0D47A1' },
+        'secondary-dark': { backgroundColor: '#2E7D32' },
+        'tertiary-dark': { backgroundColor: '#FF6F00' },
+        'quaternary-dark': { backgroundColor: '#6A1B9A' },
         default: { backgroundColor: 'grey' },
     };
 
-    // Estilos específicos para cada tamanho
     const buttonSizeStyles = {
         xlarge: { width: 200, height: 60 },
         large: { width: 180, height: 50 },
@@ -56,7 +53,6 @@ const DsButton: React.FC<DsButtonType> = (props) => {
         small: { width: 140, height: 30 },
     };
 
-    // Combinando estilos da variante e do tema, se necessário
     const variantStyles =
         buttonVariantStyles[variant] || buttonVariantStyles.default;
     const sizeStyles = buttonSizeStyles[size] || {};
