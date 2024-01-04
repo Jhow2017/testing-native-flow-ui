@@ -5,7 +5,7 @@ import type { IconsType } from '../icon/types';
 import type { ComponentMounterType } from '@ds/core/component-mounter/types';
 import { BreakpointValue } from '@ds/core/types/breakpointValue';
 
-type SizeType = 'small' | 'medium' | 'large' | 'xlarge'; // 'xxlarge'
+type SizeButtonType = 'small' | 'medium' | 'large' | 'xlarge';
 
 export type DsButtonType = {
     variant:
@@ -18,7 +18,7 @@ export type DsButtonType = {
         | 'tertiary-dark'
         | 'quaternary-dark'
         | 'default';
-    size?: BreakpointValue<'xlarge' | 'large' | 'medium' | 'small'>;
+    size?: BreakpointValue<SizeButtonType>;
     icon?: IconsType;
     iconPosition?: 'left' | 'right';
     loading?: boolean;
