@@ -37,7 +37,6 @@ export default function Home() {
             <DsLink href="/box/" fontSize={{ xs: 32, sm: 50 }}>
                 Box
             </DsLink>
-
             <DsLink href="/button/" fontSize={{ xs: 32, sm: 50 }}>
                 Button
             </DsLink>

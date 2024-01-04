@@ -1,5 +1,4 @@
-import { DsLink } from '@ds/components/global';
-import DsButton from '@ds/components/global/button';
+import { DsButton, DsLink } from '@ds/components/global';
 import { DsBox } from '@ds/components/layout';
 
 export default function Link() {

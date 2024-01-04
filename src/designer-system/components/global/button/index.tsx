@@ -6,6 +6,8 @@ import type { DsButtonType } from './types';
 
 // componentMounter
 import ComponentMounter from '@ds/core/component-mounter';
+
+// ds
 import DsIcon from '../icon';
 import { DsText } from '@ds/components/typography';
 import { DsFlex } from '@ds/components/layout';
