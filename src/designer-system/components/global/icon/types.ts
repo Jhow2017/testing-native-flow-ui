@@ -38,7 +38,7 @@ export type IconsType =
     | 'more-horizontal'
     | 'close';
 
-export type SizeTypes =
+export type SizeIconTypes =
     | 'xxlarge'
     | 'xlarge'
     | 'large'
@@ -56,7 +56,7 @@ export const sizeMapping = {
 };
 
 export type IconProps = {
-    size?: SizeTypes | string;
+    size?: SizeIconTypes | string;
     color?: Color | string;
 };
 
@@ -70,7 +70,7 @@ export interface DsIconType
         TouchableOpacityProps {
     children?: ReactNode;
     icon: IconsType;
-    size?: SizeTypes;
+    size?: SizeIconTypes;
     color?: Color;
     hitSlop?: Insets;
     stylesText?: DsTextTypes;
