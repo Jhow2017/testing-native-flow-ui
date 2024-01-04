@@ -12,14 +12,14 @@ import type { ComponentMounterType } from './types';
 import { StyledComponents } from '../styles';
 
 const ComponentMounter: React.FC<ComponentMounterType> = (props) => {
-    const { children, _platform, _css, href, as = 'View', ...rest } = props;
+    const { children, _platform, _css, href, as = 'view', ...rest } = props;
 
     const filteredFlexStyle = createAndFilterStyles(rest);
     const platformStyles = _platform ? _platform(Platform) : {};
     const additionalStyles: any =
         rest.style instanceof Array ? rest.style : [rest.style];
 
-    const BaseStyleView = StyledComponents[as] || StyledComponents.View;
+    const BaseStyleView = StyledComponents[as] || StyledComponents.view;
 
     return (
         <BaseStyleView

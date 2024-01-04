@@ -10,7 +10,7 @@ const DsLink = forwardRef<DsLinkRef, DsLinkType>((props, ref) => {
     const { children, ...attr } = props;
 
     return (
-        <ComponentMounter as="Link" {...attr}>
+        <ComponentMounter as="link" {...attr}>
             {children}
         </ComponentMounter>
     );
