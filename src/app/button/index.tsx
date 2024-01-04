@@ -1,7 +1,7 @@
 import { DsButton, DsLink } from '@ds/components/global';
 import { DsBox } from '@ds/components/layout';
 
-export default function Link() {
+export default function Button() {
     return (
         <DsBox
             flex={1}
@@ -15,7 +15,7 @@ export default function Link() {
         >
             <DsButton
                 variant="primary-dark"
-                size="medium"
+                size={{ xs: 'medium', md: 'xlarge' }}
                 icon="close"
                 iconPosition="right"
             >
