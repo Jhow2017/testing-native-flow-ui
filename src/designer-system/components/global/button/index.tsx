@@ -11,6 +11,7 @@ import ComponentMounter from '@ds/core/component-mounter';
 import DsIcon from '../icon';
 import { DsText } from '@ds/components/typography';
 import { DsFlex } from '@ds/components/layout';
+import useResolvedBreakpointValue from '@ds/hooks/useResolvedBreakpointValue';
 
 const DsButton: React.FC<DsButtonType> = (props) => {
     const {
@@ -53,9 +54,28 @@ const DsButton: React.FC<DsButtonType> = (props) => {
         small: { width: 140, height: 30 },
     };
 
+    const iconColorMapping = {
+        xlarge: '#fff',
+        large: '#eee',
+        medium: '#ddd',
+        small: '#ccc',
+    };
+
+    const fontSizeMapping = {
+        xlarge: 18,
+        large: 16,
+        medium: 14,
+        small: 12,
+    };
+
+    const resolvedSize = useResolvedBreakpointValue(size);
+
+    const iconColor = iconColorMapping[resolvedSize || 'medium'] || '#fff';
+    const fontSize = fontSizeMapping[resolvedSize || 'medium'] || 16;
+    const sizeStyles = buttonSizeStyles[resolvedSize || 'medium'];
+
     const variantStyles =
         buttonVariantStyles[variant] || buttonVariantStyles.default;
-    const sizeStyles = buttonSizeStyles[size] || {};
 
     return (
         <ComponentMounter
@@ -72,8 +92,10 @@ const DsButton: React.FC<DsButtonType> = (props) => {
                 justifyContent="center"
                 gap={8}
             >
-                {icon && <DsIcon icon="close" color="#fff" fontSize={22} />}
-                <DsText fontSize={16}>{children}</DsText>
+                {icon && (
+                    <DsIcon icon="close" color={iconColor} fontSize={22} />
+                )}
+                <DsText fontSize={fontSize}>{children}</DsText>
             </DsFlex>
         </ComponentMounter>
     );

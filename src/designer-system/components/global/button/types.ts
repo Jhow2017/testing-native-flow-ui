@@ -3,6 +3,9 @@ import { TouchableOpacityProps } from 'react-native';
 // types
 import type { IconsType } from '../icon/types';
 import type { ComponentMounterType } from '@ds/core/component-mounter/types';
+import { BreakpointValue } from '@ds/core/types/breakpointValue';
+
+type SizeType = 'small' | 'medium' | 'large' | 'xlarge'; // 'xxlarge'
 
 export type DsButtonType = {
     variant:
@@ -15,7 +18,7 @@ export type DsButtonType = {
         | 'tertiary-dark'
         | 'quaternary-dark'
         | 'default';
-    size: 'xlarge' | 'small' | 'medium' | 'large';
+    size?: BreakpointValue<'xlarge' | 'large' | 'medium' | 'small'>;
     icon?: IconsType;
     iconPosition?: 'left' | 'right';
     loading?: boolean;
