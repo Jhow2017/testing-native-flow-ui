@@ -79,7 +79,7 @@ const DsButton: React.FC<DsButtonType> = (props) => {
     const buttonSizeStyles = {
         xlarge: { width: 250, height: 80 },
         large: { width: 180, height: 50 },
-        medium: { width: 160, height: 40 },
+        medium: { width: 160, height: 50 },
         small: { width: 140, height: 30 },
     };
 
