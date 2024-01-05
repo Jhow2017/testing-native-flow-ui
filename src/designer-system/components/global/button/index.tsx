@@ -5,7 +5,7 @@ import { ActivityIndicator } from 'react-native';
 import type { DsButtonType } from './types';
 
 // config variants buttons
-import { buttonConfig } from './config';
+import { buttonConfig } from './config-variants';
 
 // componentMounter
 import ComponentMounter from '@ds/core/component-mounter';

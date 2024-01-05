@@ -1,14 +1,16 @@
+import { Color } from '@ds/core/types/color';
+
 type ButtonConfig = {
     backgroundColors: {
-        primary: string;
-        secondary: string;
-        tertiary: string;
-        quaternary: string;
-        'primary-dark': string;
-        'secondary-dark': string;
-        'tertiary-dark': string;
-        'quaternary-dark': string;
-        default: string;
+        primary: Color;
+        secondary: Color;
+        tertiary: Color;
+        quaternary: Color;
+        'primary-dark': Color;
+        'secondary-dark': Color;
+        'tertiary-dark': Color;
+        'quaternary-dark': Color;
+        default: Color;
     };
     sizes: Record<
         string,

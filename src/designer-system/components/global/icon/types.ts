@@ -3,9 +3,10 @@ import type { SvgProps } from 'react-native-svg';
 import { Insets, TouchableOpacityProps } from 'react-native';
 
 // type local
-import type { Color } from '@ds/core/types/theme';
+
 import type { BaseButtonTypesProps } from '@ds/core/types/icon';
 import type { DsTextTypes } from '@ds/components/typography/text/types';
+import { Color } from '@ds/core/types/color';
 
 export type IconsType =
     | 'bille'
