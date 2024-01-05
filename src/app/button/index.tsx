@@ -14,7 +14,7 @@ export default function Button() {
             }}
         >
             <DsButton
-                variant="primary-dark"
+                variant="tertiary"
                 size={{ xs: 'medium', md: 'xlarge' }}
                 icon="close"
                 iconPosition="right"
