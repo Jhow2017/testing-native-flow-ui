@@ -7,7 +7,7 @@ import type { DsModalTypes } from './type';
 import type { DsBoxType } from '@ds/components/layout/box/type';
 
 // hook
-import useModalAnimation from '@ds/core/hook/useModalAnimation';
+import useModalAnimation from '@ds/hooks/useModalAnimation';
 
 // @Ds
 import { DsBox } from '@ds/components/layout';
