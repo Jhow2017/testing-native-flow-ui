@@ -17,9 +17,11 @@ import useResolvedBreakpointValue from '@ds/hooks/useResolvedBreakpointValue';
 import DsIcon from '../icon';
 import { DsText } from '@ds/components/typography';
 import { DsFlex } from '@ds/components/layout';
+import filterTextStyles from '@ds/core/utils/filterTextStyles';
 
 const DsButton: React.FC<DsButtonType> = (props) => {
     const {
+        // button
         variant,
         size,
         icon,
@@ -28,6 +30,8 @@ const DsButton: React.FC<DsButtonType> = (props) => {
         theme,
         disabled,
         loadingIndicatorStyle,
+
+        // children
         children,
         ...attr
     } = props;
@@ -38,16 +42,18 @@ const DsButton: React.FC<DsButtonType> = (props) => {
         buttonConfig.sizes[resolvedSize || buttonConfig.defaultSize];
     const backgroundColor = buttonConfig.backgroundColors[variant || 'default'];
 
+    const textPropsFilter = filterTextStyles(attr);
+
     return (
         <ComponentMounter
             as="button"
             disabled={loading || disabled}
             {...attr}
-            backgroundColor={backgroundColor}
-            borderWidth={2}
-            borderColor={backgroundColor}
-            width={sizeConfig.width}
-            height={sizeConfig.height}
+            backgroundColor={attr?.backgroundColor ?? backgroundColor}
+            borderWidth={attr?.borderWidth ?? 2}
+            borderColor={attr?.borderColor ?? backgroundColor}
+            width={attr?.width ?? sizeConfig.width}
+            height={attr?.height ?? sizeConfig.height}
             style={[attr.style, buttonConfig.styledBase]}
         >
             {loading && <ActivityIndicator style={loadingIndicatorStyle} />}
@@ -64,7 +70,13 @@ const DsButton: React.FC<DsButtonType> = (props) => {
                         fontSize={sizeConfig.iconFontSize}
                     />
                 )}
-                <DsText color={'#fff'} fontSize={sizeConfig.textFontSize}>
+                <DsText
+                    color={'#fff'}
+                    fontSize={
+                        textPropsFilter?.fontSize || sizeConfig.textFontSize
+                    }
+                    {...textPropsFilter}
+                >
                     {children}
                 </DsText>
             </DsFlex>
