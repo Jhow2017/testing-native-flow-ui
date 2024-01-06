@@ -1,6 +1,6 @@
-import { cssTextOnlyPropsValue } from '../constants';
+import { cssTextStylesAndPropsValue } from '../constants';
 
-type CSSTextValue = (typeof cssTextOnlyPropsValue)[number];
+type CSSTextValue = (typeof cssTextStylesAndPropsValue)[number];
 
 type TextStylesProps = Partial<Record<CSSTextValue, any>>;
 
@@ -10,7 +10,7 @@ export default function filterTextStyles(
     const filteredProps: TextStylesProps = {};
 
     Object.keys(props).forEach((key) => {
-        if (cssTextOnlyPropsValue.includes(key as CSSTextValue)) {
+        if (cssTextStylesAndPropsValue.includes(key as CSSTextValue)) {
             filteredProps[key as CSSTextValue] = props[key];
         }
     });
