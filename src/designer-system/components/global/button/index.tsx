@@ -7,21 +7,22 @@ import type { DsButtonType } from './types';
 // config variants buttons
 import { buttonConfig } from './config-variants';
 
-// componentMounter
-import ComponentMounter from '@ds/core/component-mounter';
-
 // hooks
 import useResolvedBreakpointValue from '@ds/hooks/useResolvedBreakpointValue';
+
+// utils
+import filterTextStyles from '@ds/core/utils/filterTextStyles';
+
+// componentMounter
+import ComponentMounter from '@ds/core/component-mounter';
 
 // ds
 import DsIcon from '../icon';
 import { DsText } from '@ds/components/typography';
 import { DsFlex } from '@ds/components/layout';
-import filterTextStyles from '@ds/core/utils/filterTextStyles';
 
 const DsButton: React.FC<DsButtonType> = (props) => {
     const {
-        // button
         variant,
         size,
         icon,
@@ -36,13 +37,13 @@ const DsButton: React.FC<DsButtonType> = (props) => {
         ...attr
     } = props;
 
+    // helpers
     const resolvedSize = useResolvedBreakpointValue(size);
+    const textPropsFilter = filterTextStyles(attr);
 
     const sizeConfig =
         buttonConfig.sizes[resolvedSize || buttonConfig.defaultSize];
     const backgroundColor = buttonConfig.backgroundColors[variant || 'default'];
-
-    const textPropsFilter = filterTextStyles(attr);
 
     return (
         <ComponentMounter
