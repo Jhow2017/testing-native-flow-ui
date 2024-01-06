@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { LinkProps } from 'expo-router';
 
 // utils
-import createAndFilterStyles from '../utils/createAndFilterStyles';
+import createAndFilterStyles from '../utils/filters-styles-or-props/createAndFilterStyles';
 
 // types
 import type { ComponentMounterType } from './types';

@@ -11,7 +11,7 @@ import { buttonConfig } from './config-variants';
 import useResolvedBreakpointValue from '@ds/hooks/useResolvedBreakpointValue';
 
 // utils
-import filterTextStyles from '@ds/core/utils/filterTextStyles';
+import filterTextStyles from '@ds/core/utils/filters-styles-or-props/filterTextStyles';
 
 // componentMounter
 import ComponentMounter from '@ds/core/component-mounter';

@@ -1,4 +1,4 @@
-import { cssTextValue } from './constants';
+import { cssTextValue } from '../constants';
 
 type CSSTextValue = (typeof cssTextValue)[number];
 

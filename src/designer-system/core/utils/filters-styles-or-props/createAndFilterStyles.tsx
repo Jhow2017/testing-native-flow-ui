@@ -1,5 +1,5 @@
 import { createStyleSheet, useStyles } from '@ds/config/unistyles';
-import { cssValue } from './constants';
+import { cssValue } from '../constants';
 
 interface StyleObject {
     [key: string]: any;

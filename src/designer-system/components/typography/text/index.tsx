@@ -8,7 +8,7 @@ import { createStyleSheet, useStyles } from '@ds/config/unistyles';
 import { DsTextTypes } from './types';
 
 // utils
-import { filterStyles } from '@ds/core/utils/filterStyles';
+import { filterStyles } from '@ds/core/utils/filters-styles-or-props/filterStyles';
 
 // styles
 import { StyledText } from './styles';
