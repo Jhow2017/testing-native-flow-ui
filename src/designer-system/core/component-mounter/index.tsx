@@ -4,6 +4,7 @@ import { LinkProps } from 'expo-router';
 
 // utils
 import createAndFilterStyles from '../utils/filters-styles-or-props/createAndFilterStyles';
+import filterTextStyles from '../utils/filters-styles-or-props/filterTextStyles';
 
 // types
 import type { ComponentMounterType } from './types';
@@ -12,17 +13,19 @@ import type { ComponentMounterType } from './types';
 import { StyledComponents } from '../styles';
 
 const ComponentMounter: React.FC<ComponentMounterType> = (props) => {
-    const { children, _platform, _css, href, as = 'view', ...rest } = props;
+    const { children, _platform, _css, href, as = 'view', ...attr } = props;
 
-    const filteredFlexStyle = createAndFilterStyles(rest);
+    const textPropsFilter = filterTextStyles(attr);
+    const filteredFlexStyle = createAndFilterStyles(attr);
     const platformStyles = _platform ? _platform(Platform) : {};
     const additionalStyles: any =
-        rest.style instanceof Array ? rest.style : [rest.style];
+        attr.style instanceof Array ? attr.style : [attr.style];
 
     const BaseStyleView = StyledComponents[as] || StyledComponents.view;
 
     return (
         <BaseStyleView
+            {...textPropsFilter}
             style={[filteredFlexStyle, platformStyles, ...additionalStyles]}
             _css={_css}
             href={href as LinkProps<''>['href']}

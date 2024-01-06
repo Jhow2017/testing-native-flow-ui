@@ -17,7 +17,7 @@ interface BaseStyleViewProps {
 type StyledComponentType = {
     view: React.ComponentType<ViewProps & BaseStyleViewProps>;
     link: React.ComponentType<LinkProps<''> & BaseStyleViewProps>;
-    // Text: React.ComponentType<TextProps & BaseStyleViewProps>;
+    text: React.ComponentType<TextProps & BaseStyleViewProps>;
     button: React.ComponentType<TouchableOpacityProps & BaseStyleViewProps>;
     // ScrollView: React.ComponentType<ScrollViewProps & BaseStyleViewProps>;
 };
@@ -32,9 +32,9 @@ export const StyledComponents: StyledComponentType = {
     link: styled(Link)`
         ${applyCustomStyles}
     `,
-    // Text: styled.Text`
-    //     ${applyCustomStyles}
-    // `,
+    text: styled.Text`
+        ${applyCustomStyles}
+    `,
     button: styled.TouchableOpacity`
         ${applyCustomStyles}
     `,
