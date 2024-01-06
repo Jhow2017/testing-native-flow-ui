@@ -1,3 +1,7 @@
-import { ComponentMounterType } from '@ds/core/component-mounter/types';
+import type { ReactNode } from 'react';
 
-export type DsBoxType = {} & ComponentMounterType;
+import type { BaseViewTypesProps } from '@ds/core/types/view';
+
+export type DsBoxType = {
+    children: ReactNode;
+} & BaseViewTypesProps;

@@ -17,7 +17,8 @@ export default function Text() {
                 numberOfLines={1}
                 ellipsizeMode="tail"
                 width={'80%'}
-                fontSize={{ xs: 32, md: 50 }}
+                size="xlarge"
+                //fontSize={{ xs: 32, md: 50 }}
                 // backgroundColor={{
                 //     ':w[200,500]': 'red',
                 //     ':w[500,900]': 'blue',
@@ -27,10 +28,10 @@ export default function Text() {
                 //     marginTop: e.OS === 'ios' ? 150 : 300,
                 // })}
                 // _css={'background-color: red;'}
-                _css={{
-                    xs: 'background-color: black;',
-                    md: 'background-color: green; ',
-                }}
+                // _css={{
+                //     xs: 'background-color: black;',
+                //     md: 'background-color: green; ',
+                // }}
                 // style={{
                 //     backgroundColor: 'red',
                 // }}
