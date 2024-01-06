@@ -128,3 +128,27 @@ export const cssValue = [
     'verticalAlign',
     'writingDirection',
 ];
+
+export const cssTextValue = [
+    'color',
+    'fontFamily',
+    'fontSize',
+    'fontStyle',
+    'fontWeight',
+    'includeFontPaddingAndroid',
+    'fontVariant',
+    'letterSpacing',
+    'lineHeight',
+    'textAlign',
+    'textAlignVerticalAndroid',
+    'textDecorationColoriOS',
+    'textDecorationLine',
+    'textDecorationStyleiOS',
+    'textShadowColor',
+    'textShadowOffset',
+    'textShadowRadius',
+    'textTransform',
+    'verticalAlignAndroid',
+    'writingDirectioniOS',
+    'userSelect',
+] as const;
