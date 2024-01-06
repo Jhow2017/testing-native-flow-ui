@@ -8,7 +8,7 @@ import { createStyleSheet, useStyles } from '@ds/config/unistyles';
 import { DsTextTypes } from './types';
 
 // utils
-import { filterTextStyles } from '@ds/core/utils/filterTextStyles';
+import { filterStyles } from '@ds/core/utils/filterStyles';
 
 // styles
 import { StyledText } from './styles';
@@ -16,7 +16,7 @@ import { StyledText } from './styles';
 const DsText: React.FC<DsTextTypes> = (props) => {
     const { children, numberOfLines, ellipsizeMode, _css, ...rest } = props;
 
-    const styleFilter = filterTextStyles(rest);
+    const styleFilter = filterStyles(rest);
     const stylesheet = createStyleSheet(() => ({
         flexStyle: {
             ...styleFilter,
