@@ -3,7 +3,8 @@ import {
     ViewProps,
     TextProps,
     TouchableOpacityProps,
-    ScrollViewProps,
+    TextInput,
+    TextInputProps,
 } from 'react-native';
 import { Link, LinkProps } from 'expo-router';
 
@@ -19,7 +20,7 @@ type StyledComponentType = {
     link: React.ComponentType<LinkProps<''> & BaseStyleViewProps>;
     text: React.ComponentType<TextProps & BaseStyleViewProps>;
     button: React.ComponentType<TouchableOpacityProps & BaseStyleViewProps>;
-    // ScrollView: React.ComponentType<ScrollViewProps & BaseStyleViewProps>;
+    // input: React.ComponentType<TextInputProps & BaseStyleViewProps>;
 };
 
 const applyCustomStyles = (styleProps: BaseStyleViewProps) =>
@@ -38,7 +39,7 @@ export const StyledComponents: StyledComponentType = {
     button: styled.TouchableOpacity`
         ${applyCustomStyles}
     `,
-    // ScrollView: styled.ScrollView`
+    // input: styled(TextInput)`
     //     ${applyCustomStyles}
     // `,
 };

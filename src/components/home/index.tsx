@@ -40,6 +40,9 @@ export default function Home() {
             <DsLink href="/button/" fontSize={{ xs: 32, sm: 50 }}>
                 Button
             </DsLink>
+            <DsLink href="/input/" fontSize={{ xs: 32, sm: 50 }}>
+                Input
+            </DsLink>
         </DsFlex>
     );
 }
