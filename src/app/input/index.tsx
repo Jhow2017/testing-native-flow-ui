@@ -27,24 +27,23 @@ export default function InputPage() {
                 // style={{
                 //     backgroundColor: 'red',
                 //     width: '100%',
-                //     height: 50,
+                //     height: 60,
                 //     borderRadius: 10,
                 //     borderWidth: 1,
                 //     borderColor: 'white',
-                //     color: 'red',
+                //     color: 'green',
                 // }}
                 type={'search'}
                 size={'small'}
                 numberOfLines={4}
                 maxLength={40}
-                backgroundColor={{
-                    xs: 'red',
-                    md: '#000',
-                }}
+                // backgroundColor={{
+                //     xs: 'red',
+                //     md: '#000',
+                // }}
                 fontSize={18}
-                color={'blue'}
-                placeholderTextColor={'blue'}
-
+                // color={'blue'}
+                // placeholderTextColor={'blue'}
                 // _platform={(e) => ({
                 //     backgroundColor: e.OS === 'ios' ? 'red' : 'blue',
                 //     marginTop: e.OS === 'ios' ? 150 : 300,
