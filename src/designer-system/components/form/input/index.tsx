@@ -1,8 +1,10 @@
 import React, { useState, forwardRef } from 'react';
-import { Platform, TextInput, TextInputProps } from 'react-native';
+import { TextInput, TextInputProps } from 'react-native';
 
 //utils
 import { transformPlaceholder } from '@ds/core/utils/transformPlaceholder';
+import { cssInputTextOnlyPropsValue } from '@ds/core/utils/constants';
+import createAndFilterStyles from '@ds/core/utils/filters-styles-or-props/createAndFilterStyles';
 
 //types
 import { DsInputProps } from './type';
@@ -13,36 +15,33 @@ import DsIcon from '@ds/components/global/icon';
 import { DsText } from '@ds/components/typography';
 import ComponentMounter from '@ds/core/component-mounter';
 
-// @ds/config
-import createAndFilterStyles from '@ds/core/utils/filters-styles-or-props/createAndFilterStyles';
-import { BaseStyleView } from './styles';
-
 const DsInput = forwardRef<TextInput, DsInputProps>(
     ({ type, ...props }, ref) => {
-        const {
-            children,
-            _platform,
-            _css,
-            textTransform,
-            placeholder,
-            error,
-            ...attr
-        } = props;
+        const { children, textTransform, placeholder, error, ...attr } = props;
 
         //states
         const [showPassword, setShowPassword] = useState<boolean>(false);
 
-        // function validation properties convertion
-        const filteredFlexStyle = createAndFilterStyles(attr);
-        const platformStyles = _platform ? _platform(Platform) : {};
-        const additionalStyles: any =
-            attr.style instanceof Array ? attr.style : [attr.style];
+        const filteredStyles = createAndFilterStyles(props, [
+            ...cssInputTextOnlyPropsValue,
+        ]);
+
+        const styleFilterInput = createAndFilterStyles(attr);
 
         return (
-            <ComponentMounter position="relative">
-                <DsFlex position="relative" alignItems={'center'}>
-                    <BaseStyleView
-                        {...(props as TextInputProps)}
+            <ComponentMounter
+                position="relative"
+                width={attr?.width || '100%'}
+                height={attr?.height || 60}
+                borderRadius={attr?.borderRadius ?? 10}
+                borderWidth={attr?.borderWidth ?? 1}
+                borderColor={attr?.borderColor ?? '#363535'}
+                padding={attr?.padding ?? 16}
+                {...attr}
+            >
+                <DsFlex alignItems={'center'}>
+                    <TextInput
+                        {...(filteredStyles as TextInputProps)}
                         ref={ref}
                         placeholderTextColor={
                             attr.placeholderTextColor || '#6f6f6f'
@@ -52,30 +51,14 @@ const DsInput = forwardRef<TextInput, DsInputProps>(
                             textTransform
                         )}
                         secureTextEntry={type === 'password' && !showPassword}
-                        _css={_css}
-                        style={[
-                            filteredFlexStyle,
-                            platformStyles,
-                            additionalStyles,
-                            {
-                                width: filteredFlexStyle?.width || '100%',
-                                height: filteredFlexStyle?.height || 60,
-                                borderRadius:
-                                    filteredFlexStyle?.borderRadius ?? 10,
-                                borderWidth:
-                                    filteredFlexStyle?.borderWidth ?? 1,
-                                borderColor:
-                                    filteredFlexStyle?.borderColor ?? '#363535',
-                                color: filteredFlexStyle?.color ?? '#fff',
-                                fontSize: filteredFlexStyle?.fontSize ?? 16,
-                                fontStyle:
-                                    filteredFlexStyle?.fontStyle ?? 'normal',
-                                fontWeight:
-                                    filteredFlexStyle?.fontWeight ?? '700',
-                                padding: filteredFlexStyle?.padding ?? 16,
-                                //fontFamily:  styles?.fontFamily ?? 'Inter_400Regular'
-                            },
-                        ]}
+                        style={{
+                            width: '100%',
+                            color: styleFilterInput?.color ?? '#fff',
+                            fontSize: styleFilterInput?.fontSize ?? 16,
+                            fontStyle: styleFilterInput?.fontStyle ?? 'normal',
+                            fontWeight: styleFilterInput?.fontWeight ?? '700',
+                            //fontFamily:  styles?.fontFamily ?? 'Inter_400Regular'
+                        }}
                     />
                     {type === 'password' && (
                         <DsIcon
