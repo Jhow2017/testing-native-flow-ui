@@ -7,4 +7,7 @@ export const ICONS: Record<
     React.ComponentType<IconProps> | undefined
 > = {
     close: Icons?.CloseIcon,
+    'eye-show': Icons?.EyeShowIcon,
+    'eye-hide': Icons?.EyeHideIcon,
+    search: Icons?.SearchIcon,
 };

@@ -81,7 +81,7 @@ const DsInput = forwardRef<TextInput, DsInputProps>(
                         <DsIcon
                             icon={showPassword ? 'eye-show' : 'eye-hide'}
                             position="absolute"
-                            size={'medium'}
+                            size={'small'}
                             right={30}
                             color={'#5B5B5B'}
                             onPress={() => setShowPassword((prev) => !prev)}
@@ -90,9 +90,9 @@ const DsInput = forwardRef<TextInput, DsInputProps>(
 
                     {type === 'search' && (
                         <DsIcon
-                            icon={'close'}
+                            icon={'search'}
                             position="absolute"
-                            size={'medium'}
+                            size={'small'}
                             right={30}
                             color={'#fff'}
                         />

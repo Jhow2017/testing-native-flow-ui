@@ -31,7 +31,7 @@ export default function InputPage() {
                 //     borderColor: 'white',
                 //     color: 'red',
                 // }}
-                type={'password'}
+                type={'search'}
                 size={'small'}
                 numberOfLines={4}
                 maxLength={40}

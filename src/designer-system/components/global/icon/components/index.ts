@@ -1,3 +1,6 @@
-import { CloseIcon } from './close-icon';
+import { CloseIcon } from './close';
+import { EyeShowIcon } from './eye-show';
+import { EyeHideIcon } from './eye-hide';
+import { SearchIcon } from './search';
 
-export { CloseIcon };
+export { CloseIcon, EyeShowIcon, EyeHideIcon, SearchIcon };
