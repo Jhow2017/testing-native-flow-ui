@@ -1,11 +1,5 @@
 import styled from 'styled-components/native';
-import {
-    ViewProps,
-    TextProps,
-    TouchableOpacityProps,
-    TextInput,
-    TextInputProps,
-} from 'react-native';
+import { ViewProps, TextProps, TouchableOpacityProps } from 'react-native';
 import { Link, LinkProps } from 'expo-router';
 
 import generateCustomCss from '../utils/generateCustomCss';
@@ -20,7 +14,7 @@ type StyledComponentType = {
     link: React.ComponentType<LinkProps<''> & BaseStyleViewProps>;
     text: React.ComponentType<TextProps & BaseStyleViewProps>;
     button: React.ComponentType<TouchableOpacityProps & BaseStyleViewProps>;
-    // input: React.ComponentType<TextInputProps & BaseStyleViewProps>;
+    //input: React.ComponentType<TextInputProps & BaseStyleViewProps>;
 };
 
 const applyCustomStyles = (styleProps: BaseStyleViewProps) =>

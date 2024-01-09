@@ -1,5 +1,5 @@
 import React, { useState, forwardRef } from 'react';
-import { TextInput, TextInputProps, ViewStyle } from 'react-native';
+import { Platform, TextInput, TextInputProps } from 'react-native';
 
 //utils
 import { transformPlaceholder } from '@ds/core/utils/transformPlaceholder';
@@ -10,19 +10,38 @@ import { DsInputProps } from './type';
 //@ds
 import { DsFlex } from '@ds/components/layout';
 import DsIcon from '@ds/components/global/icon';
-import ComponentMounter from '@ds/core/component-mounter';
 import { DsText } from '@ds/components/typography';
+import ComponentMounter from '@ds/core/component-mounter';
+
+// @ds/config
+import createAndFilterStyles from '@ds/core/utils/filters-styles-or-props/createAndFilterStyles';
+import { BaseStyleView } from './styles';
 
 const DsInput = forwardRef<TextInput, DsInputProps>(
     ({ type, ...props }, ref) => {
-        const { children, textTransform, placeholder, error, ...attr } = props;
+        const {
+            children,
+            _platform,
+            _css,
+            textTransform,
+            placeholder,
+            error,
+            ...attr
+        } = props;
 
         //states
         const [showPassword, setShowPassword] = useState<boolean>(false);
+
+        // function validation properties convertion
+        const filteredFlexStyle = createAndFilterStyles(attr);
+        const platformStyles = _platform ? _platform(Platform) : {};
+        const additionalStyles: any =
+            attr.style instanceof Array ? attr.style : [attr.style];
+
         return (
             <ComponentMounter position="relative">
-                <DsFlex position="relative">
-                    <TextInput
+                <DsFlex position="relative" alignItems={'center'}>
+                    <BaseStyleView
                         {...(props as TextInputProps)}
                         ref={ref}
                         placeholderTextColor={
@@ -33,20 +52,30 @@ const DsInput = forwardRef<TextInput, DsInputProps>(
                             textTransform
                         )}
                         secureTextEntry={type === 'password' && !showPassword}
-                        style={{
-                            ...(attr.style as ViewStyle),
-                            width: attr?.width ?? '100%',
-                            height: attr?.height,
-                            borderRadius: attr?.borderRadius ?? 10,
-                            borderWidth: attr?.borderWidth ?? 1,
-                            borderColor: attr?.borderColor ?? '#363535',
-                            color: attr?.color ?? '#fff',
-                            fontSize: attr?.fontSize ?? 16,
-                            fontStyle: attr?.fontStyle ?? 'normal',
-                            fontWeight: attr?.fontWeight ?? '700',
-                            padding: attr?.padding ?? 16,
-                            fontFamily: attr?.fontFamily ?? 'Inter_400Regular',
-                        }}
+                        _css={_css}
+                        style={[
+                            filteredFlexStyle,
+                            platformStyles,
+                            additionalStyles,
+                            {
+                                width: filteredFlexStyle?.width || '100%',
+                                height: filteredFlexStyle?.height || 60,
+                                borderRadius:
+                                    filteredFlexStyle?.borderRadius ?? 10,
+                                borderWidth:
+                                    filteredFlexStyle?.borderWidth ?? 1,
+                                borderColor:
+                                    filteredFlexStyle?.borderColor ?? '#363535',
+                                color: filteredFlexStyle?.color ?? '#fff',
+                                fontSize: filteredFlexStyle?.fontSize ?? 16,
+                                fontStyle:
+                                    filteredFlexStyle?.fontStyle ?? 'normal',
+                                fontWeight:
+                                    filteredFlexStyle?.fontWeight ?? '700',
+                                padding: filteredFlexStyle?.padding ?? 16,
+                                //fontFamily:  styles?.fontFamily ?? 'Inter_400Regular'
+                            },
+                        ]}
                     />
                     {type === 'password' && (
                         <DsIcon
@@ -61,7 +90,7 @@ const DsInput = forwardRef<TextInput, DsInputProps>(
 
                     {type === 'search' && (
                         <DsIcon
-                            icon={'search'}
+                            icon={'close'}
                             position="absolute"
                             size={'medium'}
                             right={30}
