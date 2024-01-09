@@ -18,15 +18,17 @@ import ComponentMounter from '@ds/core/component-mounter';
 const DsInput = forwardRef<TextInput, DsInputProps>(
     ({ type, ...props }, ref) => {
         const { children, textTransform, placeholder, error, ...attr } = props;
+        const { color, fontSize, fontStyle, fontWeight, fontFamily } =
+            (attr.style as DsInputProps) || {};
 
         //states
         const [showPassword, setShowPassword] = useState<boolean>(false);
 
+        // filters
+        const styleFilterInput = createAndFilterStyles(attr);
         const filteredStyles = createAndFilterStyles(props, [
             ...cssInputTextOnlyPropsValue,
         ]);
-
-        const styleFilterInput = createAndFilterStyles(attr);
 
         return (
             <ComponentMounter
@@ -51,14 +53,26 @@ const DsInput = forwardRef<TextInput, DsInputProps>(
                             textTransform
                         )}
                         secureTextEntry={type === 'password' && !showPassword}
-                        style={{
-                            width: '100%',
-                            color: styleFilterInput?.color ?? '#fff',
-                            fontSize: styleFilterInput?.fontSize ?? 16,
-                            fontStyle: styleFilterInput?.fontStyle ?? 'normal',
-                            fontWeight: styleFilterInput?.fontWeight ?? '700',
-                            //fontFamily:  styles?.fontFamily ?? 'Inter_400Regular'
-                        }}
+                        style={[
+                            {
+                                width: '100%',
+                                color:
+                                    color || styleFilterInput?.color || '#fff',
+                                fontSize:
+                                    fontSize ||
+                                    styleFilterInput?.fontSize ||
+                                    16,
+                                fontStyle:
+                                    fontStyle ||
+                                    styleFilterInput?.fontStyle ||
+                                    'normal',
+                                fontWeight:
+                                    fontWeight ||
+                                    styleFilterInput?.fontWeight ||
+                                    '700',
+                                //fontFamily: fontFamily ||  styleFilterInput?.fontFamily || 'Inter_400Regular'
+                            },
+                        ]}
                     />
                     {type === 'password' && (
                         <DsIcon
