@@ -69,7 +69,7 @@ const DsInput = forwardRef<TextInput, DsInputProps>(
                                 fontWeight:
                                     fontWeight ||
                                     styleFilterInput?.fontWeight ||
-                                    '700',
+                                    'normal',
                                 fontFamily:
                                     fontFamily ||
                                     styleFilterInput?.fontFamily ||
