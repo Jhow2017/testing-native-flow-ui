@@ -70,7 +70,10 @@ const DsInput = forwardRef<TextInput, DsInputProps>(
                                     fontWeight ||
                                     styleFilterInput?.fontWeight ||
                                     '700',
-                                //fontFamily: fontFamily ||  styleFilterInput?.fontFamily || 'Inter_400Regular'
+                                fontFamily:
+                                    fontFamily ||
+                                    styleFilterInput?.fontFamily ||
+                                    'Inter_400Regular',
                             },
                         ]}
                     />
