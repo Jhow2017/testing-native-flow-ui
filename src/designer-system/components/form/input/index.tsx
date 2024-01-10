@@ -31,79 +31,90 @@ const DsInput = forwardRef<TextInput, DsInputProps>(
         ]);
 
         return (
-            <ComponentMounter
-                position="relative"
-                width={attr?.width || '100%'}
-                height={attr?.height || 60}
-                borderRadius={attr?.borderRadius ?? 10}
-                borderWidth={attr?.borderWidth ?? 1}
-                borderColor={attr?.borderColor ?? '#363535'}
-                padding={attr?.padding ?? 16}
-                {...attr}
-            >
-                <DsFlex alignItems={'center'}>
-                    <TextInput
-                        {...(filteredStyles as TextInputProps)}
-                        ref={ref}
-                        placeholderTextColor={
-                            attr.placeholderTextColor || '#6f6f6f'
-                        }
-                        placeholder={transformPlaceholder(
-                            placeholder,
-                            textTransform
-                        )}
-                        secureTextEntry={type === 'password' && !showPassword}
-                        style={[
-                            {
-                                width: '100%',
-                                color:
-                                    color || styleFilterInput?.color || '#fff',
-                                fontSize:
-                                    fontSize ||
-                                    styleFilterInput?.fontSize ||
-                                    16,
-                                fontStyle:
-                                    fontStyle ||
-                                    styleFilterInput?.fontStyle ||
-                                    'normal',
-                                fontWeight:
-                                    fontWeight ||
-                                    styleFilterInput?.fontWeight ||
-                                    'normal',
-                                fontFamily:
-                                    fontFamily ||
-                                    styleFilterInput?.fontFamily ||
-                                    'Inter_400Regular',
-                            },
-                        ]}
-                    />
-                    {type === 'password' && (
-                        <DsIcon
-                            icon={showPassword ? 'eye-show' : 'eye-hide'}
-                            position="absolute"
-                            size={'small'}
-                            right={30}
-                            color={'#5B5B5B'}
-                            onPress={() => setShowPassword((prev) => !prev)}
+            <DsFlex flexDirection={'column'} alignItems={'flex-start'}>
+                <ComponentMounter
+                    position="relative"
+                    width={attr?.width || '100%'}
+                    height={attr?.height || 60}
+                    borderRadius={attr?.borderRadius ?? 10}
+                    borderWidth={attr?.borderWidth ?? 1}
+                    borderColor={attr?.borderColor ?? '#363535'}
+                    padding={attr?.padding ?? 16}
+                    alignItems={'center'}
+                    justifyContent={'center'}
+                    {...attr}
+                >
+                    <DsFlex alignItems={'center'}>
+                        <TextInput
+                            {...(filteredStyles as TextInputProps)}
+                            ref={ref}
+                            placeholderTextColor={
+                                attr.placeholderTextColor || '#fff'
+                            }
+                            placeholder={transformPlaceholder(
+                                placeholder,
+                                textTransform
+                            )}
+                            secureTextEntry={
+                                type === 'password' && !showPassword
+                            }
+                            style={[
+                                {
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    width: '100%',
+                                    color:
+                                        color ||
+                                        styleFilterInput?.color ||
+                                        '#fff',
+                                    fontSize:
+                                        fontSize ||
+                                        styleFilterInput?.fontSize ||
+                                        16,
+                                    fontStyle:
+                                        fontStyle ||
+                                        styleFilterInput?.fontStyle ||
+                                        'normal',
+                                    fontWeight:
+                                        fontWeight ||
+                                        styleFilterInput?.fontWeight ||
+                                        'normal',
+                                    fontFamily:
+                                        fontFamily ||
+                                        styleFilterInput?.fontFamily ||
+                                        'Inter_400Regular',
+                                    lineHeight: 0,
+                                },
+                            ]}
                         />
-                    )}
 
-                    {type === 'search' && (
-                        <DsIcon
-                            icon={'search'}
-                            position="absolute"
-                            size={'small'}
-                            right={30}
-                            color={'#fff'}
-                        />
-                    )}
-                </DsFlex>
+                        {type === 'search' && (
+                            <DsIcon
+                                icon={'search'}
+                                position="absolute"
+                                size={'small'}
+                                right={30}
+                                color={'#fff'}
+                            />
+                        )}
+                        {type === 'password' && (
+                            <DsIcon
+                                icon={showPassword ? 'eye-show' : 'eye-hide'}
+                                position="absolute"
+                                size={'small'}
+                                right={30}
+                                color={'#5B5B5B'}
+                                onPress={() => setShowPassword((prev) => !prev)}
+                            />
+                        )}
+                    </DsFlex>
+                </ComponentMounter>
                 {error && (
-                    <DsText color={'red'} marginTop={16}>
+                    <DsText color={'red'} marginTop={12}>
                         {error}
                     </DsText>
                 )}
-            </ComponentMounter>
+            </DsFlex>
         );
     }
 );
