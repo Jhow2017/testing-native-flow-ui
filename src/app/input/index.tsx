@@ -32,11 +32,13 @@ export default function InputPage() {
                 //     borderWidth: 1,
                 //     borderColor: 'white',
                 //     color: 'green',
+                //     fontFamily: 'Inter_300Light',
                 // }}
                 type={'search'}
                 size={'small'}
                 numberOfLines={4}
                 maxLength={40}
+                fontFamily={'Inter_300Light'}
                 // backgroundColor={{
                 //     xs: 'red',
                 //     md: '#000',
