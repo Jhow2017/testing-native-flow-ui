@@ -19,6 +19,7 @@ import Home from '@components/home';
 
 // @ds
 import { DsText } from '@ds/components/typography';
+import DsStatusBar from '@ds/components/global/status-bar';
 
 export default function App() {
     let [fontsLoaded] = useFonts({
@@ -34,7 +35,7 @@ export default function App() {
     }
     return (
         <UnistylesTheme theme={theme}>
-            <StatusBar style="dark" translucent />
+            <DsStatusBar style="dark" translucent />
             <Home />
         </UnistylesTheme>
     );
