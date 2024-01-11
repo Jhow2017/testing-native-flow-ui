@@ -1,4 +1,4 @@
-export const FontSize = {
+export const fontSize = {
     xs: 16,
     sm: 18,
     md: 20,
@@ -17,4 +17,4 @@ export const FontSize = {
     '12xl': 46,
 } as const;
 
-export type FontSizeType = keyof typeof FontSize;
+export type FontSizeType = keyof typeof fontSize;

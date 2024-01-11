@@ -20,11 +20,14 @@ export default function Home() {
         >
             <DsLink
                 href="/link/"
-                fontSize={{ xs: 32, sm: 50 }}
+                fontSize={{ xs: 32, sm: 42 }}
                 _platform={(e) => ({
                     //backgroundColor: e.OS === 'ios' ? 'red' : 'blue',
                     marginTop: e.OS === 'ios' ? 150 : 300,
                 })}
+                // style={{
+                //     fontSize: 24,
+                // }}
             >
                 Link
             </DsLink>

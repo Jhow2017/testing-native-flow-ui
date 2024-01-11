@@ -1,5 +1,3 @@
-import { colors } from './colors';
-import { breakpoints } from './breakpoints';
-import { FontSize } from './fontSize';
-
-export const theme = { colors, breakpoints, FontSize } as const;
+import { light } from './light';
+import { dark } from './dark';
+export { light, dark };
