@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { Platform } from 'react-native';
+
 import {
     StatusBar,
     setStatusBarBackgroundColor,
@@ -6,7 +8,6 @@ import {
     setStatusBarNetworkActivityIndicatorVisible,
     setStatusBarTranslucent,
 } from 'expo-status-bar';
-import { Platform } from 'react-native';
 
 // types
 import { DsStatusBarProps } from './types';
