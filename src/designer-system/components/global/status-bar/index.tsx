@@ -1,22 +1,15 @@
 import React, { useEffect } from 'react';
 import {
     StatusBar,
-    StatusBarProps,
-    StatusBarStyle,
     setStatusBarBackgroundColor,
     setStatusBarHidden,
     setStatusBarNetworkActivityIndicatorVisible,
     setStatusBarTranslucent,
 } from 'expo-status-bar';
-import { Platform, StatusBarAnimation } from 'react-native';
+import { Platform } from 'react-native';
 
-interface DsStatusBarProps extends StatusBarProps {
-    style: StatusBarStyle;
-    setBackgroundColor?: [string, boolean?]; // Cor de fundo e opcionalmente se é animado
-    setHidden?: [boolean, StatusBarAnimation?]; // Esconder e opcionalmente a animação
-    setNetworkActivityIndicatorVisible?: boolean; // Visibilidade do indicador de atividade de rede
-    setTranslucent?: boolean; // Translucidez da barra de status
-}
+// types
+import { DsStatusBarProps } from './types';
 
 const DsStatusBar: React.FC<DsStatusBarProps> = (props) => {
     const {
