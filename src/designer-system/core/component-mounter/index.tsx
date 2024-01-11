@@ -3,8 +3,8 @@ import { Platform } from 'react-native';
 import { LinkProps } from 'expo-router';
 
 // utils
-import createAndFilterStyles from '../utils/filters-styles-or-props/createAndFilterStyles';
-import filterTextStyles from '../utils/filters-styles-or-props/filterTextStyles';
+import createAndFilterStyles from '../utils/filters/createAndFilterStyles';
+import filterTextStyles from '../utils/filters/filterTextStyles';
 
 // types
 import type { ComponentMounterType } from './types';

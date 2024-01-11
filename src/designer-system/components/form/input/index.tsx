@@ -4,7 +4,7 @@ import { TextInput, TextInputProps } from 'react-native';
 //utils
 import { transformPlaceholder } from '@ds/core/utils/transformPlaceholder';
 import { cssInputTextOnlyPropsValue } from '@ds/core/utils/constants';
-import createAndFilterStyles from '@ds/core/utils/filters-styles-or-props/createAndFilterStyles';
+import createAndFilterStyles from '@ds/core/utils/filters/createAndFilterStyles';
 
 //types
 import { DsInputProps } from './type';
