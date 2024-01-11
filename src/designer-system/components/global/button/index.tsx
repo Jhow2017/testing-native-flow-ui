@@ -8,7 +8,7 @@ import type { DsButtonType } from './types';
 import { buttonConfig } from './config-variants';
 
 // hooks
-import useResolvedBreakpointValue from '@ds/hooks/useResolvedBreakpointValue';
+import { useResolvedBreakpointValue } from '@ds/hooks';
 
 // utils
 import filterTextStyles from '@ds/core/utils/filters-styles-or-props/filterTextStyles';

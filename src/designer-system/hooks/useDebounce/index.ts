@@ -1,4 +1,4 @@
-export function useDebounce<F extends (...args: any[]) => void>(
+export default function useDebounce<F extends (...args: any[]) => void>(
     func: F,
     wait: number,
     immediate: boolean = false
