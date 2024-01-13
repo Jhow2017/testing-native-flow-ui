@@ -1,4 +1,3 @@
-import { UnistylesTheme } from 'react-native-unistyles';
 import 'react-native-gesture-handler';
 
 import {
@@ -15,9 +14,6 @@ import {
     Roboto_700Bold,
     Roboto_900Black,
 } from '@expo-google-fonts/roboto';
-
-// @confg
-import { theme } from '@ds/config/tokens';
 
 // component
 import Home from '@components/home';
@@ -42,9 +38,9 @@ export default function App() {
         return <DsText>Olá, carregando</DsText>;
     }
     return (
-        <UnistylesTheme theme={theme}>
+        <>
             <DsStatusBar style="dark" translucent />
             <Home />
-        </UnistylesTheme>
+        </>
     );
 }
