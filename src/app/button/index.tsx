@@ -7,11 +7,11 @@ export default function Button() {
             flex={1}
             justifyContent={'center'}
             alignItems={'center'}
-            //backgroundColor={'yellow'}
-            backgroundColor={{
-                ':w[200,500]': 'white',
-                ':w[500,900]': 'blue',
-            }}
+            backgroundColor={'yellow'}
+            // backgroundColor={{
+            //     ':w[200,500]': 'white',
+            //     ':w[500,900]': 'blue',
+            // }}
         >
             <DsButton
                 variant="tertiary"

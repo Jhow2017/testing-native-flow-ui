@@ -1,130 +1,45 @@
-import { DsTextTypes } from '@ds/components/typography/text/types';
+import { BreakpointKeys, breakpoints } from '@ds/config/tokens/breakpoints';
+import { cssValue as defaultCssValue } from '../constants';
 
-export const filterStyles = <T extends DsTextTypes>(styleProps: T): T => {
-    // Lista de propriedades permitidas para o componente Text
-    const allowedTextStyles: (keyof T)[] = [
-        'alignContent',
-        'alignItems',
-        'alignSelf',
-        'aspectRatio',
-        'borderBottomWidth',
-        'borderEndWidth',
-        'borderLeftWidth',
-        'borderRightWidth',
-        'borderStartWidth',
-        'borderTopWidth',
-        'borderWidth',
-        'bottom',
-        'columnGap',
-        'direction',
-        'display',
-        'end',
-        'flex',
-        'flexBasis',
-        'flexDirection',
-        'flexGrow',
-        'flexShrink',
-        'flexWrap',
-        'gap',
-        'height',
+interface Style {
+    [key: string]: string | number | undefined;
+}
 
-        'justifyContent',
-        'left',
-        'margin',
+const filterStyles = (
+    attr: any,
+    currentBreakpoint: BreakpointKeys,
+    customCssValues?: string[]
+): Style => {
+    const cssValuesToUse = customCssValues || defaultCssValue;
+    let filteredStyles: Style = {};
+    const breakpointKeys: BreakpointKeys[] = Object.keys(
+        breakpoints
+    ) as BreakpointKeys[];
 
-        'marginBottom',
-        'marginEnd',
-        'marginHorizontal',
-
-        'marginLeft',
-        'marginRight',
-        'marginStart',
-        'marginTop',
-        'marginVertical',
-        'maxHeight',
-        'maxWidth',
-        'minHeight',
-        'minWidth',
-        'overflow',
-        'padding',
-
-        'paddingBottom',
-        'paddingEnd',
-        'paddingHorizontal',
-
-        'paddingLeft',
-        'paddingRight',
-        'paddingStart',
-        'paddingTop',
-        'paddingVertical',
-        'position',
-        'right',
-        'rowGap',
-        'start',
-        'top',
-        'width',
-        'zIndex',
-        'shadowColor',
-        'shadowOffset',
-        'shadowOpacity',
-        'shadowRadius',
-        'transform',
-        'backfaceVisibility',
-        'backgroundColor',
-        'borderBottomColor',
-        'borderBottomEndRadius',
-        'borderBottomLeftRadius',
-        'borderBottomRightRadius',
-        'borderBottomStartRadius',
-        'borderColor',
-        'borderCurve',
-        'borderEndColor',
-        'borderEndEndRadius',
-        'borderEndStartRadius',
-        'borderLeftColor',
-        'borderRadius',
-        'borderRightColor',
-        'borderStartColor',
-        'borderStartEndRadius',
-        'borderStartStartRadius',
-        'borderStyle',
-        'borderTopColor',
-        'borderTopEndRadius',
-        'borderTopLeftRadius',
-        'borderTopRightRadius',
-        'borderTopStartRadius',
-        'elevation',
-        'opacity',
-        'pointerEvents',
-        'color',
-        'fontFamily',
-        'fontSize',
-        'fontStyle',
-        'fontWeight',
-        'includeFontPadding',
-        'letterSpacing',
-        'lineHeight',
-        'textAlign',
-        'textAlignVertical',
-        'textDecorationColor',
-        'textDecorationLine',
-        'textDecorationStyle',
-        'textShadowColor',
-        'textShadowOffset',
-        'textShadowRadius',
-        'textTransform',
-        'userSelect',
-        'verticalAlign',
-        'writingDirection',
-    ];
-
-    const filteredStyles: Partial<T> = {};
-
-    allowedTextStyles.forEach((key) => {
-        if (styleProps.hasOwnProperty(key)) {
-            filteredStyles[key] = styleProps[key];
+    for (const key in attr) {
+        if (!cssValuesToUse.includes(key)) {
+            continue;
         }
-    });
 
-    return filteredStyles as T;
+        const value = attr[key];
+        if (value && typeof value === 'object') {
+            for (
+                let i = breakpointKeys.indexOf(currentBreakpoint);
+                i >= 0;
+                i--
+            ) {
+                const breakpoint = breakpointKeys[i];
+                if (value[breakpoint] !== undefined) {
+                    filteredStyles[key] = value[breakpoint];
+                    break;
+                }
+            }
+        } else {
+            filteredStyles[key] = value;
+        }
+    }
+
+    return filteredStyles;
 };
+
+export default filterStyles;

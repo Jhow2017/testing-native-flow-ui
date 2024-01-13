@@ -4,7 +4,7 @@ import { TextInput, TextInputProps } from 'react-native';
 //utils
 import { transformPlaceholder } from '@ds/core/utils/transformPlaceholder';
 import { cssInputTextOnlyPropsValue } from '@ds/core/utils/constants';
-import createAndFilterStyles from '@ds/core/utils/filters/createAndFilterStyles';
+import filterStyles from '@ds/core/utils/filters/filterStyles';
 
 //types
 import { DsInputProps } from './type';
@@ -25,8 +25,8 @@ const DsInput = forwardRef<TextInput, DsInputProps>(
         const [showPassword, setShowPassword] = useState<boolean>(false);
 
         // filters
-        const styleFilterInput = createAndFilterStyles(attr);
-        const filteredStyles = createAndFilterStyles(props, [
+        const styleFilterInput = filterStyles(attr);
+        const filteredStyles = filterStyles(props, [
             ...cssInputTextOnlyPropsValue,
         ]);
 
