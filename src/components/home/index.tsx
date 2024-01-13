@@ -47,7 +47,7 @@ export default function Home() {
                 Input
             </DsLink>
             <DsLink href="/icon/" fontSize={{ xs: 32, sm: 50 }}>
-                icon
+                icon/Flex
             </DsLink>
         </DsFlex>
     );
