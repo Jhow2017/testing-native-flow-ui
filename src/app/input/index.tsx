@@ -28,7 +28,7 @@ export default function InputPage() {
                 alignItems={'center'}
                 flexDirection={'column'}
                 gap={24}
-                backgroundColor={'#000'}
+                backgroundColor={'green'}
             >
                 <DsInput
                     value={textValue}
@@ -53,7 +53,11 @@ export default function InputPage() {
                     //     xs: 'red',
                     //     md: '#000',
                     // }}
-                    fontSize={18}
+                    fontSize={{
+                        xs: 16,
+                        sm: 24,
+                    }}
+                    margin={16}
                     // color={'blue'}
                     // placeholderTextColor={'blue'}
                     // _platform={(e) => ({
@@ -71,7 +75,7 @@ export default function InputPage() {
                     fontSize={32}
                     backgroundColor={{
                         xs: '#fff',
-                        md: '#000',
+                        md: 'red',
                     }}
                 >
                     voltar {textValue}
