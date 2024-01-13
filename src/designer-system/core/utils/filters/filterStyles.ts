@@ -9,7 +9,7 @@ const filterStyles = (
     attr: any,
     currentBreakpoint: BreakpointKeys,
     customCssValues?: string[]
-): Style => {
+): any => {
     const cssValuesToUse = customCssValues || defaultCssValue;
     let filteredStyles: Style = {};
     const breakpointKeys: BreakpointKeys[] = Object.keys(
