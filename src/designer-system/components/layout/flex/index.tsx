@@ -2,31 +2,18 @@ import React from 'react';
 import ComponentMounter from '@ds/core/component-mounter';
 
 // config
-import { createStyleSheet, useStyles } from '@ds/config/unistyles';
 
 // type
 import type { DsFlexType } from './type';
 
 const DsFlex: React.FC<DsFlexType> = (props) => {
-    const { children, flexDirection, ...attr } = props;
-
-    const stylesheet = createStyleSheet(() => ({
-        flexStyle: {
-            flexDirection,
-        },
-    }));
-
-    const { styles } = useStyles(stylesheet);
+    const { children, ...attr } = props;
 
     return (
         <ComponentMounter
             {...attr}
-            style={[
-                attr.style,
-                {
-                    flexDirection: styles?.flexStyle?.flexDirection || 'row',
-                },
-            ]}
+            style={[attr.style]}
+            flexDirection={attr?.flexDirection ?? 'row'}
         >
             {children}
         </ComponentMounter>
