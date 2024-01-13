@@ -14,34 +14,43 @@ import { DsFlex } from '@ds/components/layout';
 import DsIcon from '@ds/components/global/icon';
 import { DsText } from '@ds/components/typography';
 import ComponentMounter from '@ds/core/component-mounter';
+import useBreakpoint from '@ds/hooks/useBreakpoint';
 
 const DsInput = forwardRef<TextInput, DsInputProps>(
-    ({ type, ...props }, ref) => {
+    ({ type, margin, padding, ...props }, ref) => {
         const { children, textTransform, placeholder, error, ...attr } = props;
         const { color, fontSize, fontStyle, fontWeight, fontFamily } =
             (attr.style as DsInputProps) || {};
+
+        // hook
+        const currentBreakpoint = useBreakpoint();
 
         //states
         const [showPassword, setShowPassword] = useState<boolean>(false);
 
         // filters
-        const styleFilterInput = filterStyles(attr);
-        const filteredStyles = filterStyles(props, [
+        const styleFilterInput = filterStyles(attr, currentBreakpoint);
+        const filteredStyles = filterStyles(props, currentBreakpoint, [
             ...cssInputTextOnlyPropsValue,
         ]);
 
         return (
-            <DsFlex flexDirection={'column'} alignItems={'flex-start'}>
+            <DsFlex
+                flexDirection={'column'}
+                alignItems={'flex-start'}
+                margin={margin}
+                padding={padding}
+            >
                 <ComponentMounter
                     position="relative"
+                    alignItems={'center'}
+                    justifyContent={'center'}
+                    paddingHorizontal={16}
                     width={attr?.width || '100%'}
                     height={attr?.height || 60}
                     borderRadius={attr?.borderRadius ?? 10}
                     borderWidth={attr?.borderWidth ?? 1}
                     borderColor={attr?.borderColor ?? '#363535'}
-                    padding={attr?.padding ?? 16}
-                    alignItems={'center'}
-                    justifyContent={'center'}
                     {...attr}
                 >
                     <DsFlex alignItems={'center'}>
