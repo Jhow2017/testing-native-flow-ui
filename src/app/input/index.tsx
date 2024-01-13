@@ -41,7 +41,7 @@ export default function InputPage() {
                     //     borderRadius: 10,
                     //     borderWidth: 1,
                     //     borderColor: 'white',
-                    //     color: 'green',
+                    //     fontSize: 24,
                     //     fontFamily: 'Inter_300Light',
                     // }}
                     type={'search'}
@@ -53,10 +53,10 @@ export default function InputPage() {
                     //     xs: 'red',
                     //     md: '#000',
                     // }}
-                    fontSize={{
-                        xs: 16,
-                        sm: 24,
-                    }}
+                    // fontSize={{
+                    //     xs: 16,
+                    //     sm: 24,
+                    // }}
                     margin={16}
                     // color={'blue'}
                     // placeholderTextColor={'blue'}
@@ -66,7 +66,7 @@ export default function InputPage() {
                     // })}
                     // _css={{
                     //     xs: 'background-color: blue;',
-                    //     md: 'background-color: green; ',
+                    //     md: 'background-color: red; ',
                     // }}
                 />
 
