@@ -2,22 +2,25 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { LinkProps } from 'expo-router';
 
-// utils
+// utils/hooks
 import filterStyles from '../utils/filters/filterStyles';
 import filterTextStyles from '../utils/filters/filterTextStyles';
+import useBreakpoint from '@ds/hooks/useBreakpoint';
 
 // types
 import type { ComponentMounterType } from './types';
 
 // styles
 import { StyledComponents } from '../styles';
-import useBreakpoint from '@ds/hooks/useBreakpoint';
 
 const ComponentMounter: React.FC<ComponentMounterType> = (props) => {
     const { children, _platform, _css, href, as = 'view', ...attr } = props;
 
-    const textPropsFilter = filterTextStyles(attr);
+    // hook
     const currentBreakpoint = useBreakpoint();
+
+    // filters
+    const textPropsFilter = filterTextStyles(attr);
     const filteredFlexStyle = filterStyles(props, currentBreakpoint);
 
     const platformStyles = _platform ? _platform(Platform) : {};
