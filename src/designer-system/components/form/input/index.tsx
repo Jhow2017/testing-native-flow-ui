@@ -5,6 +5,7 @@ import { TextInput, TextInputProps } from 'react-native';
 import { transformPlaceholder } from '@ds/core/utils/transformPlaceholder';
 import { cssInputTextOnlyPropsValue } from '@ds/core/utils/constants';
 import filterStyles from '@ds/core/utils/filters/filterStyles';
+import useBreakpoint from '@ds/hooks/useBreakpoint';
 
 //types
 import { DsInputProps } from './type';
@@ -14,7 +15,6 @@ import { DsFlex } from '@ds/components/layout';
 import DsIcon from '@ds/components/global/icon';
 import { DsText } from '@ds/components/typography';
 import ComponentMounter from '@ds/core/component-mounter';
-import useBreakpoint from '@ds/hooks/useBreakpoint';
 
 const DsInput = forwardRef<TextInput, DsInputProps>(
     ({ type, margin, padding, ...props }, ref) => {
