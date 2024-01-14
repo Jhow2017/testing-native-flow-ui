@@ -7,19 +7,19 @@ export default function IconPage() {
             flex={1}
             justifyContent={'center'}
             alignItems={'center'}
-            backgroundColor={{
-                xs: 'red',
-                sm: 'yellow',
-            }}
             // backgroundColor={{
-            //     ':w[200,500]': 'white',
-            //     ':w[500,900]': 'blue',
+            //     xs: 'red',
+            //     sm: 'yellow',
             // }}
+            backgroundColor={{
+                ':w[200,500]': 'blue',
+                ':w[500,900]': 'yellow',
+            }}
         >
             <DsFlex
                 gap={{
-                    xs: 24,
-                    sm: 100,
+                    ':w[200,500]': 24,
+                    ':w[500,900]': 100,
                 }}
                 alignItems={'center'}
                 justifyContent={'center'}
