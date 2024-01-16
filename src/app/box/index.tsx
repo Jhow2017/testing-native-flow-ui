@@ -1,5 +1,4 @@
-import { DsLink } from '@ds/components/global';
-import { DsBox } from '@ds/components/layout';
+import { DsBox, DsLink } from 'native-flow-ui';
 
 export default function Box() {
     return (
@@ -8,11 +7,11 @@ export default function Box() {
             width={'100%'}
             justifyContent={{ xs: 'center' }}
             alignItems={{ xs: 'center', md: 'center' }}
-            //backgroundColor={{ xs: 'green', md: 'red' }}
-            backgroundColor={{
-                ':w[200,500]': 'red',
-                ':w[500,900]': 'blue',
-            }}
+            backgroundColor={{ xs: 'green', md: 'red' }}
+            // backgroundColor={{
+            //     ':w[200,500]': 'green',
+            //     ':w[500,900]': 'blue',
+            // }}
             // _platform={(e) => ({
             //     backgroundColor: e.OS === 'ios' ? 'red' : 'blue',
             //     marginTop: e.OS === 'ios' ? 150 : 300,
