@@ -1,5 +1,5 @@
-import { DsLink } from '@ds/components/global';
-import { DsFlex } from '@ds/components/layout';
+import { DsLink } from 'native-flow-ui';
+import { DsFlex } from 'native-flow-ui';
 
 export default function Home() {
     return (

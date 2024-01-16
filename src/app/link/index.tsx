@@ -1,5 +1,5 @@
-import { DsLink } from '@ds/components/global';
-import { DsBox } from '@ds/components/layout';
+import { DsLink } from 'native-flow-ui';
+import { DsBox } from 'native-flow-ui';
 
 export default function Link() {
     return (

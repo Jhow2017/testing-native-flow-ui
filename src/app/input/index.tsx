@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import DsInput from '@ds/components/form/input';
-import { DsLink, DsStatusBar } from '@ds/components/global';
-import { DsFlex } from '@ds/components/layout';
+import { DsInput } from 'native-flow-ui';
+import { DsLink, DsStatusBar } from 'native-flow-ui';
+import { DsFlex } from 'native-flow-ui';
 
 export default function InputPage() {
     const [textValue, setTextValue] = useState<string>('');

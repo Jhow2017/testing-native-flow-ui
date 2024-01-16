@@ -1,6 +1,4 @@
-import { DsLink } from '@ds/components/global';
-import { DsBox } from '@ds/components/layout';
-import { DsText } from '@ds/components/typography';
+import { DsBox, DsLink, DsText } from 'native-flow-ui';
 
 export default function Text() {
     return (

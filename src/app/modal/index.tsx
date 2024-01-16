@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { DsIcon, DsLink, DsModal } from '@ds/components/global';
-import { DsBox } from '@ds/components/layout';
-import { DsText } from '@ds/components/typography';
+import { DsIcon, DsLink, DsModal } from 'native-flow-ui';
+import { DsBox } from 'native-flow-ui';
+import { DsText } from 'native-flow-ui';
 
 export default function Home() {
     const [isModalVisible, setModalVisible] = useState(false);
