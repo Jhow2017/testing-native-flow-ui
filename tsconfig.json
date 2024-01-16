@@ -4,9 +4,7 @@
         "strict": true,
         "baseUrl": "./",
         "paths": {
-            "@ds/*": ["src/designer-system/*"],
-            "@images/*": ["src/assets/*"],
-            "@components/*": ["src/components/*"]
+            "@images/*": ["src/assets/*"]
         }
     },
     "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
