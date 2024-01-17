@@ -1,5 +1,5 @@
-import { DsLink } from 'native-flow-ui';
-import { DsBox } from 'native-flow-ui';
+import { DsLink } from 'native-flow';
+import { DsBox } from 'native-flow';
 
 export default function Link() {
     return (

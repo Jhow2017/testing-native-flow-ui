@@ -1,5 +1,5 @@
-import { DsButton, DsLink } from 'native-flow-ui';
-import { DsBox } from 'native-flow-ui';
+import { DsButton, DsLink } from 'native-flow';
+import { DsBox } from 'native-flow';
 
 export default function Button() {
     return (

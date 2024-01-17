@@ -19,7 +19,7 @@ import {
 import Home from '@components/home';
 
 // @ds
-import { DsText, DsStatusBar } from 'native-flow-ui';
+import { DsText, DsStatusBar } from 'native-flow';
 
 export default function App() {
     let [fontsLoaded] = useFonts({

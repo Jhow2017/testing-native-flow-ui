@@ -1,5 +1,4 @@
-import { DsLink } from 'native-flow-ui';
-import { DsFlex } from 'native-flow-ui';
+import { DsLink, DsFlex } from 'native-flow';
 
 export default function Home() {
     return (
@@ -11,8 +10,8 @@ export default function Home() {
             flexDirection={'column'}
             gap={4}
             backgroundColor={{
-                xs: 'red',
-                sm: 'blue',
+                xs: 'blue',
+                sm: 'red',
             }}
             // style={{
             //     backgroundColor: 'red',

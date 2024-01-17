@@ -1,5 +1,5 @@
-import { DsIcon, DsLink } from 'native-flow-ui';
-import { DsBox, DsFlex } from 'native-flow-ui';
+import { DsIcon, DsLink } from 'native-flow';
+import { DsBox, DsFlex } from 'native-flow';
 
 export default function IconPage() {
     return (
