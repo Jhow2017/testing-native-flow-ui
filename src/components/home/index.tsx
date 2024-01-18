@@ -51,6 +51,9 @@ export default function Home() {
             <DsLink href="/carousel/" fontSize={{ xs: 32, sm: 50 }}>
                 Carousel
             </DsLink>
+            <DsLink href="/accordion/" fontSize={{ xs: 32, sm: 50 }}>
+                Accordion
+            </DsLink>
         </DsFlex>
     );
 }
