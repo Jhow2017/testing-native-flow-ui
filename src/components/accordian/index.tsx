@@ -29,12 +29,12 @@ const DsAccordian: React.FC<DsAccordionTypes> = (props) => {
                 height={56}
                 paddingLeft={25}
                 paddingRight={18}
-                backgroundColor={'#DCDCDC'}
+                backgroundColor={expanded ? '#000000' : '#808080'}
                 onPress={toggleExpand}
             >
                 <DsText
                     size="medium"
-                    color={'#666666'}
+                    color={'#fff'}
                     fontWeight="900"
                     {...titleStyle}
                 >
@@ -43,15 +43,17 @@ const DsAccordian: React.FC<DsAccordionTypes> = (props) => {
                 <DsIcon
                     icon={expanded ? 'close' : 'close'}
                     size={'small'}
-                    color={'#666666'}
+                    color={'#fff'}
                     onPress={toggleExpand}
                 />
             </DsFlex>
-            {/* @ts-ignore */}
+
             <DsBox height={1} color={'#fff'} width="100%" />
             {expanded && (
-                <DsBox padding={16}>
-                    <DsText {...contentStyle}>{content}</DsText>
+                <DsBox padding={16} backgroundColor={'#CDCDCD'}>
+                    <DsText color={'#000'} {...contentStyle}>
+                        {content}
+                    </DsText>
                 </DsBox>
             )}
         </DsBox>

@@ -1,5 +1,4 @@
-import { DsLink, DsBox, DsFlex, DsText, DsCarousel } from 'native-flow';
-import DsAccordian from '@components/accordian';
+import { DsLink, DsBox, DsAccordian } from 'native-flow';
 
 export default function AccordionPage() {
     const menuData = [
@@ -18,7 +17,7 @@ export default function AccordionPage() {
     ];
 
     return (
-        <DsBox flex={1} backgroundColor={'red'} width={'100%'}>
+        <DsBox flex={1}>
             {menuData.map((item, index) => (
                 <DsAccordian
                     key={index}
