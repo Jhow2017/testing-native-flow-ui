@@ -50,6 +50,14 @@ const DsCarousel: React.FC<DsCarouselTypes> = (props) => {
         setCurrentSlide(newSlide);
     };
 
+    const handleScroll = (event: {
+        nativeEvent: { contentOffset: { x: any } };
+    }) => {
+        const contentOffsetX = event.nativeEvent.contentOffset.x;
+        const newCurrentSlide = Math.round(contentOffsetX / width);
+        setCurrentSlide(newCurrentSlide);
+    };
+
     return (
         <DsBox flex={1} position={'relative'} {...attr}>
             <ScrollView
@@ -58,6 +66,7 @@ const DsCarousel: React.FC<DsCarouselTypes> = (props) => {
                 showsHorizontalScrollIndicator={false}
                 ref={scrollViewRef}
                 scrollEventThrottle={16}
+                onMomentumScrollEnd={handleScroll}
             >
                 {children.map((child, index) => (
                     <DsBox
