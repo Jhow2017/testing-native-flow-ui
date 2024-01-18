@@ -59,7 +59,7 @@ const DsCarousel: React.FC<DsCarouselTypes> = (props) => {
     };
 
     return (
-        <DsBox flex={1} position={'relative'} {...attr}>
+        <DsBox position={'relative'} {...attr}>
             <ScrollView
                 horizontal
                 pagingEnabled

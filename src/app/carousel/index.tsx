@@ -16,7 +16,7 @@ export default function CarouselPage() {
 
     return (
         <DsBox flex={1} backgroundColor={'red'} width={'100%'}>
-            <DsCarousel showDots autoPlay={true} showArrows>
+            <DsCarousel showDots autoPlay showArrows>
                 {DATA.map((item, index) => (
                     <DsFlex
                         key={index}
@@ -44,7 +44,13 @@ export default function CarouselPage() {
                 alignItems={'center'}
                 justifyContent={'center'}
             >
-                <DsLink href="/" fontSize={32}>
+                <DsLink
+                    href="/"
+                    fontSize={{
+                        xs: 32,
+                        md: 50,
+                    }}
+                >
                     voltar
                 </DsLink>
             </DsBox>
