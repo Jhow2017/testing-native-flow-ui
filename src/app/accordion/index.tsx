@@ -29,7 +29,10 @@ export default function AccordionPage() {
 
             <DsBox
                 flex={1}
-                backgroundColor={'green'}
+                backgroundColor={{
+                    xs: 'blue',
+                    md: 'green',
+                }}
                 alignItems={'center'}
                 justifyContent={'center'}
             >
