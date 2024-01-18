@@ -1,8 +1,10 @@
 import { DsBoxType } from 'native-flow/dist/cjs/components/box/type';
 import { ReactNode } from 'react';
 
-export type DsCarouselTypes = {
+export interface DsCarouselTypes extends DsBoxType {
     children: ReactNode[];
-    showDots?: boolean;
-    time?: number;
-} & DsBoxType;
+    showArrows: boolean;
+    showDots: boolean;
+    autoPlay?: boolean;
+    interval?: number;
+}
