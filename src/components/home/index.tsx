@@ -22,7 +22,7 @@ export default function Home() {
                 fontSize={{ xs: 32, sm: 42 }}
                 _platform={(e) => ({
                     //backgroundColor: e.OS === 'ios' ? 'red' : 'blue',
-                    marginTop: e.OS === 'ios' ? 150 : 300,
+                    marginTop: e.OS === 'ios' ? 0 : 100,
                 })}
                 // style={{
                 //     fontSize: 24,
@@ -46,7 +46,10 @@ export default function Home() {
                 Input
             </DsLink>
             <DsLink href="/icon/" fontSize={{ xs: 32, sm: 50 }}>
-                icon/Flex
+                Icon/Flex
+            </DsLink>
+            <DsLink href="/carousel/" fontSize={{ xs: 32, sm: 50 }}>
+                Carousel
             </DsLink>
         </DsFlex>
     );
