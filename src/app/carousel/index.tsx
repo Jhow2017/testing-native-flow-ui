@@ -1,6 +1,6 @@
 import { Image } from 'react-native';
-import { DsLink, DsBox, DsFlex, DsText } from 'native-flow';
-import DsCarousel from '@components/carousel';
+import { DsLink, DsBox, DsFlex, DsText, DsCarousel } from 'native-flow';
+
 export default function CarouselPage() {
     const DATA = [
         {
