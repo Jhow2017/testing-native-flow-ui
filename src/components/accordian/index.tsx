@@ -5,7 +5,7 @@ import { DsBox, DsFlex, DsIcon, DsText } from 'native-flow';
 import { DsAccordionTypes } from './types';
 
 const DsAccordian: React.FC<DsAccordionTypes> = (props) => {
-    const { title, content, ...attr } = props;
+    const { title, titleStyle, content, contentStyle, ...attr } = props;
 
     const [expanded, setExpanded] = useState(false);
 
@@ -32,7 +32,12 @@ const DsAccordian: React.FC<DsAccordionTypes> = (props) => {
                 backgroundColor={'#DCDCDC'}
                 onPress={toggleExpand}
             >
-                <DsText size="medium" color={'#666666'}>
+                <DsText
+                    size="medium"
+                    color={'#666666'}
+                    fontWeight="900"
+                    {...titleStyle}
+                >
                     {title}
                 </DsText>
                 <DsIcon
@@ -46,7 +51,7 @@ const DsAccordian: React.FC<DsAccordionTypes> = (props) => {
             <DsBox height={1} color={'#fff'} width="100%" />
             {expanded && (
                 <DsBox padding={16}>
-                    <DsText>{content}</DsText>
+                    <DsText {...contentStyle}>{content}</DsText>
                 </DsBox>
             )}
         </DsBox>
