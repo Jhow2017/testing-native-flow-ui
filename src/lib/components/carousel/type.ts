@@ -1,5 +1,6 @@
-import { DsBoxType } from 'native-flow/dist/cjs/components/box/type';
 import { ReactNode } from 'react';
+
+import { DsBoxType } from '../box/type';
 
 export interface DsCarouselTypes extends DsBoxType {
     children: ReactNode[];

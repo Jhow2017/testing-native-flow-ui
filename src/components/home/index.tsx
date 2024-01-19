@@ -54,6 +54,9 @@ export default function Home() {
             <DsLink href="/accordion/" fontSize={{ xs: 32, sm: 50 }}>
                 Accordion
             </DsLink>
+            <DsLink href="/shadow-box/" fontSize={{ xs: 32, sm: 50 }}>
+                ShadowBox
+            </DsLink>
         </DsFlex>
     );
 }

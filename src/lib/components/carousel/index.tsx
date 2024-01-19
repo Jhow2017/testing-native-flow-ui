@@ -1,30 +1,35 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { ReactNode, memo, useEffect, useRef, useState } from 'react';
 import { ScrollView, TouchableOpacity, Dimensions } from 'react-native';
-import { DsBox, DsIcon } from 'native-flow';
 
-import { DsCarouselTypes } from './types';
+// ds internal
+import DsBox from '../box';
+import DsIcon from '../icon';
 
 const { width } = Dimensions.get('window');
 
-const DsCarousel: React.FC<DsCarouselTypes> = (props) => {
-    const {
-        children,
-        showArrows,
-        showDots,
-        autoPlay = false,
-        interval = 3000,
-        ...attr
-    } = props;
+import { DsCarouselTypes } from './type';
 
-    const [currentSlide, setCurrentSlide] = useState(0);
+type DsCarouselSlideProps = {
+    child: ReactNode;
+};
+
+const DsCarouselSlide = memo<DsCarouselSlideProps>(({ child }) => (
+    <DsBox width={width} flex={1} justifyContent={'center'} alignItems={'center'}>
+        {child}
+    </DsBox>
+));
+
+const DsCarousel: React.FC<DsCarouselTypes> = (props) => {
+    const { children, showArrows, showDots, autoPlay = false, interval = 3000, ...attr } = props;
+
+    const timerRef = useRef<any>(null);
     const scrollViewRef = useRef<ScrollView>(null);
-    const timerRef = useRef<number | NodeJS.Timeout | null>(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
         if (autoPlay) {
             timerRef.current = setInterval(() => {
-                const nextSlide = (currentSlide + 1) % children.length;
-                setCurrentSlide(nextSlide);
+                setCurrentSlide((prevSlide) => (prevSlide + 1) % children.length);
             }, interval);
         }
 
@@ -33,12 +38,12 @@ const DsCarousel: React.FC<DsCarouselTypes> = (props) => {
                 clearInterval(timerRef.current);
             }
         };
-    }, [autoPlay, interval, currentSlide, children.length]);
+    }, [autoPlay, interval, children.length]);
 
     useEffect(() => {
         scrollViewRef.current?.scrollTo({
             x: width * currentSlide,
-            animated: true,
+            animated: true
         });
     }, [currentSlide]);
 
@@ -50,9 +55,7 @@ const DsCarousel: React.FC<DsCarouselTypes> = (props) => {
         setCurrentSlide(newSlide);
     };
 
-    const handleScroll = (event: {
-        nativeEvent: { contentOffset: { x: any } };
-    }) => {
+    const handleScroll = (event: { nativeEvent: { contentOffset: { x: any } } }) => {
         const contentOffsetX = event.nativeEvent.contentOffset.x;
         const newCurrentSlide = Math.round(contentOffsetX / width);
         setCurrentSlide(newCurrentSlide);
@@ -69,15 +72,7 @@ const DsCarousel: React.FC<DsCarouselTypes> = (props) => {
                 onMomentumScrollEnd={handleScroll}
             >
                 {children.map((child, index) => (
-                    <DsBox
-                        key={index}
-                        width={width}
-                        flex={1}
-                        justifyContent={'center'}
-                        alignItems={'center'}
-                    >
-                        {child}
-                    </DsBox>
+                    <DsCarouselSlide child={child} key={index} />
                 ))}
             </ScrollView>
 
@@ -98,7 +93,7 @@ const DsCarousel: React.FC<DsCarouselTypes> = (props) => {
                             backgroundColor={'rgba(0, 0, 0, 0.6)'}
                             padding={10}
                             style={{
-                                borderRadius: 30,
+                                borderRadius: 30
                             }}
                             onPress={() => handleArrowClick(direction)}
                         />
@@ -125,11 +120,8 @@ const DsCarousel: React.FC<DsCarouselTypes> = (props) => {
                                     marginHorizontal: 6,
                                     borderColor: 'transparent',
                                     borderWidth: 1,
-                                    backgroundColor:
-                                        index === currentSlide
-                                            ? 'blue'
-                                            : 'grey',
-                                },
+                                    backgroundColor: index === currentSlide ? 'blue' : 'grey'
+                                }
                             ]}
                             onPress={() => setCurrentSlide(index)}
                         />

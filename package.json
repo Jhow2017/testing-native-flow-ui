@@ -28,7 +28,7 @@
         "expo-system-ui": "~2.4.0",
         "expo-web-browser": "~12.3.2",
         "moti": "^0.27.2",
-        "native-flow": "0.0.12",
+        "native-flow": "0.0.16",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-native": "0.72.6",

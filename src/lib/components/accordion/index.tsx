@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { LayoutAnimation, Platform, UIManager } from 'react-native';
-import { DsBox, DsFlex, DsIcon, DsText } from 'native-flow';
+
+// ds internal
+import DsBox from '../box';
+import DsText from '../text';
+import DsIcon from '../icon';
+import ComponentMounter from '../../core/component-mounter';
 
 import { DsAccordionTypes } from './types';
-
 const DsAccordian: React.FC<DsAccordionTypes> = (props) => {
     const { title, titleStyle, content, contentStyle, ...attr } = props;
 
@@ -23,21 +27,18 @@ const DsAccordian: React.FC<DsAccordionTypes> = (props) => {
 
     return (
         <DsBox {...attr}>
-            <DsFlex
+            <ComponentMounter
+                as="button"
                 justifyContent={'space-between'}
                 alignItems={'center'}
+                flexDirection={'row'}
                 height={56}
                 paddingLeft={25}
                 paddingRight={18}
                 backgroundColor={expanded ? '#000000' : '#808080'}
                 onPress={toggleExpand}
             >
-                <DsText
-                    size="medium"
-                    color={'#fff'}
-                    fontWeight="900"
-                    {...titleStyle}
-                >
+                <DsText size="medium" color={'#fff'} fontWeight="900" {...titleStyle}>
                     {title}
                 </DsText>
                 <DsIcon
@@ -46,9 +47,10 @@ const DsAccordian: React.FC<DsAccordionTypes> = (props) => {
                     color={'#fff'}
                     onPress={toggleExpand}
                 />
-            </DsFlex>
+            </ComponentMounter>
 
             <DsBox height={1} color={'#fff'} width="100%" />
+
             {expanded && (
                 <DsBox padding={16} backgroundColor={'#CDCDCD'}>
                     <DsText color={'#000'} {...contentStyle}>
