@@ -22,12 +22,10 @@ const ComponentMounter: React.FC<ComponentMounterType> = (props) => {
     // filters
     const textPropsFilter = filterTextStyles(attr);
     const filteredFlexStyle = filterStyles(props, currentBreakpoint);
+    const { boxShadow } = filteredFlexStyle;
 
     const platformStyles = _platform ? _platform(Platform) : {};
-
-    const shadowStyle = filteredFlexStyle?.boxShadow
-        ? parseBoxShadow(filteredFlexStyle?.boxShadow)
-        : {};
+    const shadowStyle = boxShadow ? parseBoxShadow(boxShadow) : {};
     const additionalStyles: any =
         attr.style instanceof Array ? attr.style : [attr.style];
 

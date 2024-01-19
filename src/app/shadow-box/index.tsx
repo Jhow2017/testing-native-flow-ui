@@ -8,7 +8,7 @@ export default function ShadowBoxPage() {
             width={'100%'}
             justifyContent={{ xs: 'center' }}
             alignItems={{ xs: 'center', md: 'center' }}
-            backgroundColor={{ xs: 'green', md: 'red' }}
+            backgroundColor={{ xs: '#fff', md: 'green' }}
         >
             <DsFlex
                 flexDirection={'column'}
@@ -25,7 +25,10 @@ export default function ShadowBoxPage() {
                     justifyContent={'center'}
                     alignItems={'center'}
                     padding={16}
-                    boxShadow="0px 4px 10px yellow"
+                    // boxShadow={{
+                    //     xs: '0px 1px 3px rgba(0, 0, 0, 0.15)',
+                    //     md: '0px 1px 5px red',
+                    // }}
                 >
                     <DsText
                         color="#000"
@@ -42,7 +45,7 @@ export default function ShadowBoxPage() {
                 <DsBox
                     borderRadius={10}
                     padding={{ sm: 24, md: 24, lg: 32 }}
-                    backgroundColor="#fff"
+                    backgroundColor="red"
                     width={'100%'}
                     height={200}
                     justifyContent={'center'}
