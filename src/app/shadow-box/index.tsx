@@ -25,8 +25,8 @@ export default function ShadowBoxPage() {
                     alignItems={'center'}
                     padding={16}
                     // boxShadow={{
-                    //     xs: '0px 1px 3px rgba(0, 0, 0, 0.15)',
-                    //     md: '0px 1px 5px red',
+                    //     xs: '0px 1px 3px red',
+                    //     md: '0px 1px 5px #000',
                     // }}
                 >
                     <DsText
