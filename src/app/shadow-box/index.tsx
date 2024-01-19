@@ -1,5 +1,4 @@
-import DsShadowBox from '@ds/shadow-box';
-import { DsBox, DsFlex, DsLink, DsText } from 'native-flow';
+import { DsBox, DsFlex, DsLink, DsShadowBox, DsText } from 'native-flow';
 
 export default function ShadowBoxPage() {
     return (
