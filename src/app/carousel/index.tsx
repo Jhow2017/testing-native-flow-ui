@@ -4,10 +4,10 @@ import { Link, Box, Flex, Text, Carousel } from 'native-flow';
 export default function CarouselPage() {
     const DATA = [
         {
-            image: 'https://i0.wp.com/help.grandchef.com.br/wp-content/uploa/2019/09/ceb-JUmP.png?fit=1600%2C900&ssl=1',
+            image: 'https://cdn.abrahao.com.br/base/c06/02e/7be/promocao-restaurante-oriental-fb.png',
         },
         {
-            image: 'https://www.clickriomafra.com.br/wp-content/uploa/2021/04/06/Promo%C3%A7%C3%B5es-especiais-no-aplicativo-do-Restaurante-Vitorino-2.jpg',
+            image: 'https://cdn.abrahao.com.br/base/c06/02e/7be/promocao-restaurante-oriental-fb.png',
         },
         {
             image: 'https://cdn.abrahao.com.br/base/c06/02e/7be/promocao-restaurante-oriental-fb.png',
