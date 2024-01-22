@@ -1,8 +1,8 @@
-import { DsBox, DsLink } from 'native-flow';
+import { Box, Link } from 'native-flow';
 
-export default function Box() {
+export default function BoxPage() {
     return (
-        <DsBox
+        <Box
             flex={1}
             width={'100%'}
             justifyContent={{ xs: 'center' }}
@@ -22,9 +22,9 @@ export default function Box() {
             //     md: 'background-color: green; ',
             // }}
         >
-            <DsLink href="/" fontSize={32}>
+            <Link href="/" fontSize={32}>
                 Voltar
-            </DsLink>
-        </DsBox>
+            </Link>
+        </Box>
     );
 }

@@ -1,4 +1,4 @@
-import { DsLink, DsBox, DsAccordian } from 'native-flow';
+import { Link, Box, Accordian } from 'native-flow';
 
 export default function AccordionPage() {
     const menuData = [
@@ -17,16 +17,16 @@ export default function AccordionPage() {
     ];
 
     return (
-        <DsBox flex={1}>
+        <Box flex={1}>
             {menuData.map((item, index) => (
-                <DsAccordian
+                <Accordian
                     key={index}
                     title={item.title}
                     content={item.content}
                 />
             ))}
 
-            <DsBox
+            <Box
                 flex={1}
                 backgroundColor={{
                     xs: 'blue',
@@ -35,7 +35,7 @@ export default function AccordionPage() {
                 alignItems={'center'}
                 justifyContent={'center'}
             >
-                <DsLink
+                <Link
                     href="/"
                     fontSize={{
                         xs: 32,
@@ -43,8 +43,8 @@ export default function AccordionPage() {
                     }}
                 >
                     voltar
-                </DsLink>
-            </DsBox>
-        </DsBox>
+                </Link>
+            </Box>
+        </Box>
     );
 }

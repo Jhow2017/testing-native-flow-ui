@@ -18,8 +18,8 @@ import {
 // component
 import Home from '@components/home';
 
-// @ds
-import { DsText, DsStatusBar } from 'native-flow';
+// @
+import { Text, StatusBar } from 'native-flow';
 
 export default function App() {
     let [fontsLoaded] = useFonts({
@@ -34,11 +34,11 @@ export default function App() {
     });
 
     if (!fontsLoaded) {
-        return <DsText>Olá, carregando</DsText>;
+        return <Text>Olá, carregando</Text>;
     }
     return (
         <>
-            <DsStatusBar style="dark" translucent />
+            <StatusBar style="dark" translucent />
             <Home />
         </>
     );

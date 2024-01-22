@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { DsInput } from 'native-flow';
-import { DsLink, DsStatusBar } from 'native-flow';
-import { DsFlex } from 'native-flow';
+import { Input } from 'native-flow';
+import { Link, StatusBar } from 'native-flow';
+import { Flex } from 'native-flow';
 
 export default function InputPage() {
     const [textValue, setTextValue] = useState<string>('');
@@ -13,7 +13,7 @@ export default function InputPage() {
 
     return (
         <>
-            <DsStatusBar
+            <StatusBar
                 style="dark"
                 translucent
                 setBackgroundColor={['#FF0000', true]}
@@ -22,7 +22,7 @@ export default function InputPage() {
                 setTranslucent={true}
             />
 
-            <DsFlex
+            <Flex
                 flex={1}
                 justifyContent={'center'}
                 alignItems={'center'}
@@ -30,7 +30,7 @@ export default function InputPage() {
                 gap={24}
                 backgroundColor={'green'}
             >
-                <DsInput
+                <Input
                     value={textValue}
                     onChangeText={onChangeSearchText}
                     placeholder="Digite seu texto"
@@ -70,7 +70,7 @@ export default function InputPage() {
                     // }}
                 />
 
-                <DsLink
+                <Link
                     href="/"
                     fontSize={32}
                     backgroundColor={{
@@ -79,8 +79,8 @@ export default function InputPage() {
                     }}
                 >
                     voltar {textValue}
-                </DsLink>
-            </DsFlex>
+                </Link>
+            </Flex>
         </>
     );
 }

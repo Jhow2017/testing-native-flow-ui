@@ -1,9 +1,9 @@
-import { DsButton, DsLink } from 'native-flow';
-import { DsBox } from 'native-flow';
+import { Button, Link } from 'native-flow';
+import { Box } from 'native-flow';
 
-export default function Button() {
+export default function ButtonPage() {
     return (
-        <DsBox
+        <Box
             flex={1}
             justifyContent={'center'}
             alignItems={'center'}
@@ -13,17 +13,17 @@ export default function Button() {
             //     ':w[500,900]': 'blue',
             // }}
         >
-            <DsButton
+            <Button
                 variant="tertiary"
                 size={{ xs: 'medium', md: 'xlarge' }}
                 icon="close"
                 iconPosition="right"
             >
                 Botão
-            </DsButton>
-            <DsLink href="/" fontSize={32}>
+            </Button>
+            <Link href="/" fontSize={32}>
                 voltar
-            </DsLink>
-        </DsBox>
+            </Link>
+        </Box>
     );
 }

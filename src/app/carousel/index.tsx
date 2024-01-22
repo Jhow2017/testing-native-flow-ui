@@ -1,13 +1,13 @@
 import { Image } from 'react-native';
-import { DsLink, DsBox, DsFlex, DsText, DsCarousel } from 'native-flow';
+import { Link, Box, Flex, Text, Carousel } from 'native-flow';
 
 export default function CarouselPage() {
     const DATA = [
         {
-            image: 'https://i0.wp.com/help.grandchef.com.br/wp-content/uploads/2019/09/ceb-JUmP.png?fit=1600%2C900&ssl=1',
+            image: 'https://i0.wp.com/help.grandchef.com.br/wp-content/uploa/2019/09/ceb-JUmP.png?fit=1600%2C900&ssl=1',
         },
         {
-            image: 'https://www.clickriomafra.com.br/wp-content/uploads/2021/04/06/Promo%C3%A7%C3%B5es-especiais-no-aplicativo-do-Restaurante-Vitorino-2.jpg',
+            image: 'https://www.clickriomafra.com.br/wp-content/uploa/2021/04/06/Promo%C3%A7%C3%B5es-especiais-no-aplicativo-do-Restaurante-Vitorino-2.jpg',
         },
         {
             image: 'https://cdn.abrahao.com.br/base/c06/02e/7be/promocao-restaurante-oriental-fb.png',
@@ -15,17 +15,17 @@ export default function CarouselPage() {
     ];
 
     return (
-        <DsBox flex={1} backgroundColor={'red'} width={'100%'}>
-            <DsCarousel showDots autoPlay showArrows>
+        <Box flex={1} backgroundColor={'red'} width={'100%'}>
+            <Carousel showDots autoPlay showArrows>
                 {DATA.map((item, index) => (
-                    <DsFlex
+                    <Flex
                         key={index}
                         width={'100%'}
                         alignItems={'center'}
                         flexDirection={'column'}
                         gap={12}
                     >
-                        <DsText>Aqui é um titulo {index}</DsText>
+                        <Text>Aqui é um titulo {index}</Text>
                         <Image
                             key={index}
                             source={{ uri: item.image }}
@@ -35,16 +35,16 @@ export default function CarouselPage() {
                                 resizeMode: 'cover',
                             }}
                         />
-                    </DsFlex>
+                    </Flex>
                 ))}
-            </DsCarousel>
-            <DsBox
+            </Carousel>
+            <Box
                 flex={1}
                 backgroundColor={'green'}
                 alignItems={'center'}
                 justifyContent={'center'}
             >
-                <DsLink
+                <Link
                     href="/"
                     fontSize={{
                         xs: 32,
@@ -52,8 +52,8 @@ export default function CarouselPage() {
                     }}
                 >
                     voltar
-                </DsLink>
-            </DsBox>
-        </DsBox>
+                </Link>
+            </Box>
+        </Box>
     );
 }

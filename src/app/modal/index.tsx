@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
-import { DsIcon, DsLink, DsModal } from 'native-flow';
-import { DsBox } from 'native-flow';
-import { DsText } from 'native-flow';
+import { Icon, Link, Modal } from 'native-flow';
+import { Box } from 'native-flow';
+import { Text } from 'native-flow';
 
 export default function Home() {
     const [isModalVisible, setModalVisible] = useState(false);
 
     return (
-        <DsBox
+        <Box
             flex={1}
             width={'100%'}
             justifyContent={{ xs: 'center' }}
@@ -28,7 +28,7 @@ export default function Home() {
             //     md: 'background-color: green; ',
             // }}
         >
-            <DsIcon
+            <Icon
                 icon="close"
                 color="#fff"
                 fontSize={24}
@@ -55,8 +55,8 @@ export default function Home() {
                 }}
             >
                 Abrir o Modal
-            </DsIcon>
-            <DsModal
+            </Icon>
+            <Modal
                 visible={isModalVisible}
                 onClose={() => setModalVisible(false)}
                 backgroundColor={{
@@ -64,7 +64,7 @@ export default function Home() {
                     md: 'red',
                 }}
             >
-                <DsText>
+                <Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Nunc vitae massa odio. Quisque ante sem, tempor eget massa
                     vel, mollis tincidunt metus. Ut sed felis lectus. Nam semper
@@ -80,11 +80,11 @@ export default function Home() {
                     laoreet eget eros et, hendrerit iaculis risus. Nam a nulla
                     in purus fermentum rhoncus eu et erat. Aliquam tempus felis
                     lorem, id hendrerit tortor vestibulum ac.
-                </DsText>
-            </DsModal>
-            <DsLink href="/" fontSize={32}>
+                </Text>
+            </Modal>
+            <Link href="/" fontSize={32}>
                 Voltar
-            </DsLink>
-        </DsBox>
+            </Link>
+        </Box>
     );
 }

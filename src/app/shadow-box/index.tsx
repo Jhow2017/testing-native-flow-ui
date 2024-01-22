@@ -1,15 +1,15 @@
-import { DsBox, DsFlex, DsLink, DsShadowBox, DsText } from 'native-flow';
+import { Box, Flex, Link, ShadowBox, Text } from 'native-flow';
 
 export default function ShadowBoxPage() {
     return (
-        <DsBox
+        <Box
             flex={1}
             width={'100%'}
             justifyContent={{ xs: 'center' }}
             alignItems={{ xs: 'center', md: 'center' }}
             backgroundColor={{ xs: '#fff', md: 'green' }}
         >
-            <DsFlex
+            <Flex
                 flexDirection={'column'}
                 gap={32}
                 width={'100%'}
@@ -18,7 +18,7 @@ export default function ShadowBoxPage() {
                     md: 32,
                 }}
             >
-                <DsShadowBox
+                <ShadowBox
                     width={'100%'}
                     height={200}
                     justifyContent={'center'}
@@ -29,7 +29,7 @@ export default function ShadowBoxPage() {
                     //     md: '0px 1px 5px #000',
                     // }}
                 >
-                    <DsText
+                    <Text
                         color="#000"
                         fontSize={{
                             xs: 16,
@@ -39,9 +39,9 @@ export default function ShadowBoxPage() {
                     >
                         Shadow-box com escrita/sintaxe css e convertida para
                         sintaxe aceita pelo React Native
-                    </DsText>
-                </DsShadowBox>
-                <DsBox
+                    </Text>
+                </ShadowBox>
+                <Box
                     borderRadius={10}
                     padding={{ sm: 24, md: 24, lg: 32 }}
                     backgroundColor="red"
@@ -50,7 +50,7 @@ export default function ShadowBoxPage() {
                     justifyContent={'center'}
                     alignItems={'center'}
                 >
-                    <DsText
+                    <Text
                         color="#000"
                         fontSize={{
                             xs: 24,
@@ -58,13 +58,13 @@ export default function ShadowBoxPage() {
                         }}
                     >
                         Box sem shadow-box
-                    </DsText>
-                </DsBox>
-            </DsFlex>
+                    </Text>
+                </Box>
+            </Flex>
 
-            <DsLink href="/" fontSize={32}>
+            <Link href="/" fontSize={32}>
                 Voltar
-            </DsLink>
-        </DsBox>
+            </Link>
+        </Box>
     );
 }

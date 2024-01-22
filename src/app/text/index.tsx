@@ -1,15 +1,15 @@
-import { DsBox, DsLink, DsText } from 'native-flow';
+import { Box, Link, Text } from 'native-flow';
 
-export default function Text() {
+export default function TextPage() {
     return (
-        <DsBox
+        <Box
             flex={1}
             width={'100%'}
             justifyContent={{ xs: 'center' }}
             alignItems={{ xs: 'center', md: 'center' }}
             backgroundColor={{ xs: 'blue', md: 'blue' }}
         >
-            <DsText
+            <Text
                 color="#fff"
                 textTransform="capitalize"
                 numberOfLines={1}
@@ -36,11 +36,11 @@ export default function Text() {
             >
                 texto bem grande texto bem grande texto bem grande texto bem
                 grande
-            </DsText>
+            </Text>
 
-            <DsLink href="/" fontSize={32}>
+            <Link href="/" fontSize={32}>
                 voltar
-            </DsLink>
-        </DsBox>
+            </Link>
+        </Box>
     );
 }

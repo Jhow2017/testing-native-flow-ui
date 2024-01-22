@@ -1,8 +1,8 @@
-import { DsLink, DsFlex } from 'native-flow';
+import { Link, Flex } from 'native-flow';
 
 export default function Home() {
     return (
-        <DsFlex
+        <Flex
             flex={1}
             width={'100%'}
             justifyContent={{ xs: 'center' }}
@@ -17,7 +17,7 @@ export default function Home() {
             //     backgroundColor: 'red',
             // }}
         >
-            <DsLink
+            <Link
                 href="/link/"
                 fontSize={{ xs: 32, sm: 42 }}
                 _platform={(e) => ({
@@ -29,34 +29,34 @@ export default function Home() {
                 // }}
             >
                 Link
-            </DsLink>
-            <DsLink href="/modal/" fontSize={{ xs: 32, sm: 50 }}>
+            </Link>
+            <Link href="/modal/" fontSize={{ xs: 32, sm: 50 }}>
                 Modal
-            </DsLink>
-            <DsLink href="/text/" fontSize={{ xs: 32, sm: 50 }}>
+            </Link>
+            <Link href="/text/" fontSize={{ xs: 32, sm: 50 }}>
                 Text
-            </DsLink>
-            <DsLink href="/box/" fontSize={{ xs: 32, sm: 50 }}>
+            </Link>
+            <Link href="/box/" fontSize={{ xs: 32, sm: 50 }}>
                 Box
-            </DsLink>
-            <DsLink href="/button/" fontSize={{ xs: 32, sm: 50 }}>
+            </Link>
+            <Link href="/button/" fontSize={{ xs: 32, sm: 50 }}>
                 Button
-            </DsLink>
-            <DsLink href="/input/" fontSize={{ xs: 32, sm: 50 }}>
+            </Link>
+            <Link href="/input/" fontSize={{ xs: 32, sm: 50 }}>
                 Input
-            </DsLink>
-            <DsLink href="/icon/" fontSize={{ xs: 32, sm: 50 }}>
+            </Link>
+            <Link href="/icon/" fontSize={{ xs: 32, sm: 50 }}>
                 Icon/Flex
-            </DsLink>
-            <DsLink href="/carousel/" fontSize={{ xs: 32, sm: 50 }}>
+            </Link>
+            <Link href="/carousel/" fontSize={{ xs: 32, sm: 50 }}>
                 Carousel
-            </DsLink>
-            <DsLink href="/accordion/" fontSize={{ xs: 32, sm: 50 }}>
+            </Link>
+            <Link href="/accordion/" fontSize={{ xs: 32, sm: 50 }}>
                 Accordion
-            </DsLink>
-            <DsLink href="/shadow-box/" fontSize={{ xs: 32, sm: 50 }}>
+            </Link>
+            <Link href="/shadow-box/" fontSize={{ xs: 32, sm: 50 }}>
                 ShadowBox
-            </DsLink>
-        </DsFlex>
+            </Link>
+        </Flex>
     );
 }
