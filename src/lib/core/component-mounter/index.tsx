@@ -12,12 +12,15 @@ import type { ComponentMounterType } from './types';
 
 // styles
 import { StyledComponents } from '../styles';
-
+import { useTheme } from '../../../lib/store/theme';
 const ComponentMounter: React.FC<ComponentMounterType> = (props) => {
     const { children, _platform, _css, href, as = 'view', ...attr } = props;
 
     // hook
     const currentBreakpoint = useBreakpoint();
+
+    const theme = useTheme();
+    console.log('theme', theme?.colors);
 
     // filters
     const textPropsFilter = filterTextStyles(attr);

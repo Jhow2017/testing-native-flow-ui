@@ -20,6 +20,8 @@ import Home from '@components/home';
 
 // @
 import { Text, StatusBar } from 'native-flow';
+import { ThemeProvider } from 'src/lib/store/theme';
+import { defaultTheme } from 'src/theme/customTheme';
 
 export default function App() {
     let [fontsLoaded] = useFonts({
@@ -37,9 +39,9 @@ export default function App() {
         return <Text>Olá, carregando</Text>;
     }
     return (
-        <>
+        <ThemeProvider theme={defaultTheme}>
             <StatusBar style="dark" translucent />
             <Home />
-        </>
+        </ThemeProvider>
     );
 }
